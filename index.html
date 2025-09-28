@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Master Complete</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-container">
+            <h1>English Master Complete</h1>
+            <div class="controls">
+                <input type="search" id="search-input" placeholder="Buscar em tudo...">
+                <button id="translation-toggle" class="control-btn">Tradução: ON</button>
+                <button id="theme-toggle" class="control-btn">Tema: Claro</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="tab-nav">
+        <div class="tab-scroll-container">
+            <button class="tab-link active" data-tab="pilares">⚖️ Pilares</button>
+            <button class="tab-link" data-tab="regulares">📝 Regulares</button>
+            <button class="tab-link" data-tab="irregulares">🔄 Irregulares</button>
+            <button class="tab-link" data-tab="conversacoes">💬 Conversações</button>
+            <button class="tab-link" data-tab="artigos">📖 Artigos</button>
+            <button class="tab-link" data-tab="adjetivos">🎨 Adjetivos</button>
+            <button class="tab-link" data-tab="numeros">🔢 Números</button>
+            <button class="tab-link" data-tab="nacionalidades">🌍 Nacionalidades</button>
+            <button class="tab-link" data-tab="profissoes">👥 Profissões</button>
+            <button class="tab-link" data-tab="continuous">⏰ Continuous</button>
+            <button class="tab-link" data-tab="perfect">✅ Perfect</button>
+            <button class="tab-link" data-tab="modais">🔑 Modais</button>
+        </div>
+    </nav>
+
+    <main class="content-container">
+        <div id="pilares" class="tab-content active"></div>
+        <div id="regulares" class="tab-content"></div>
+        <div id="irregulares" class="tab-content"></div>
+        <div id="conversacoes" class="tab-content"></div>
+        <div id="artigos" class="tab-content"></div>
+        <div id="adjetivos" class="tab-content"></div>
+        <div id="numeros" class="tab-content"></div>
+        <div id="nacionalidades" class="tab-content"></div>
+        <div id="profissoes" class="tab-content"></div>
+        <div id="continuous" class="tab-content"></div>
+        <div id="perfect" class="tab-content"></div>
+        <div id="modais" class="tab-content"></div>
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

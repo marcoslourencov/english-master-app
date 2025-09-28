@@ -1,0 +1,21 @@
+{
+    "A1": [
+        {
+            "title": "Meeting for the first time",
+            "dialogue": [
+                { "eng": "Hello, I'm John.", "ipa": "hɛˈloʊ, aɪm ʤɑn", "por": "Olá, eu sou o John." },
+                { "eng": "Hi John, I'm Maria. Nice to meet you.", "ipa": "haɪ ʤɑn, aɪm məˈriə. naɪs tu mit ju", "por": "Oi John, eu sou a Maria. Prazer em te conhecer." },
+                { "eng": "Nice to meet you too. Where are you from?", "ipa": "naɪs tu mit ju tu. wɛr ɑr ju frʌm?", "por": "Prazer em te conhecer também. De onde você é?" }
+            ]
+        }
+    ],
+    "B2": [
+        {
+            "title": "Discussing a project",
+            "dialogue": [
+                { "eng": "Regarding the quarterly report, I believe we should emphasize the market trends.", "ipa": "rɪˈgɑrdɪŋ ðə ˈkwɔrtərli rɪˈpɔrt, aɪ bɪˈliv wi ʃʊd ˈɛmfəˌsaɪz ðə ˈmɑrkət trɛndz", "por": "Com relação ao relatório trimestral, acredito que deveríamos enfatizar as tendências de mercado." },
+                { "eng": "That's a valid point. However, we must also address the budget constraints.", "ipa": "ðæts ə ˈvælɪd pɔɪnt. haʊˈɛvər, wi mʌst ˈɔlsoʊ əˈdrɛs ðə ˈbʌʤɪt kənˈstreɪnts", "por": "É um ponto válido. No entanto, também devemos abordar as restrições orçamentárias." }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "artigos": [
+        { "eng": "She bought a car.", "ipa": "ʃi bɔt ə kɑr", "por": "Ela comprou um carro." },
+        { "eng": "I want to eat an apple.", "ipa": "aɪ wɑnt tu it æn ˈæpəl", "por": "Eu quero comer uma maçã." },
+        { "eng": "The sun is very hot today.", "ipa": "ðə sʌn ɪz ˈvɛri hɑt təˈdeɪ", "por": "O sol está muito quente hoje." }
+    ],
+    "adjetivos": [
+        { "eng": "He is tall.", "ipa": "hi ɪz tɔl", "por": "Ele é alto." },
+        { "eng": "She is taller than him.", "ipa": "ʃi ɪz ˈtɔlər ðæn hɪm", "por": "Ela é mais alta que ele." },
+        { "eng": "He is the tallest in the class.", "ipa": "hi ɪz ðə ˈtɔləst ɪn ðə klæs", "por": "Ele é o mais alto da turma." }
+    ],
+    "nacionalidades": [
+        { "eng": "I am from Brazil. I am Brazilian.", "ipa": "aɪ æm frʌm brəˈzɪl. aɪ æm brəˈzɪljən", "por": "Eu sou do Brasil. Eu sou brasileiro." }
+    ],
+    "profissoes": [
+        { "eng": "My sister is a doctor.", "ipa": "maɪ ˈsɪstər ɪz ə ˈdɑktər", "por": "Minha irmã é médica." }
+    ],
+    "modais": [
+        { "eng": "You can speak English.", "ipa": "ju kæn spik ˈɪŋglɪʃ", "por": "Você consegue falar inglês." }
+    ]
+}

@@ -1,0 +1,36 @@
+[
+    {
+        "type": "regular",
+        "infinitive": "agree",
+        "past": "agreed",
+        "participle": "agreed",
+        "translation": "concordar",
+        "present_example": {
+            "eng": "We agree with your decision.",
+            "ipa": "wi əˈgri wɪθ jʊər dɪˈsɪʒən",
+            "por": "Nós concordamos com sua decisão."
+        },
+        "past_example": {
+            "eng": "She agreed to help us.",
+            "ipa": "ʃi əˈgrid tu hɛlp ʌs",
+            "por": "Ela concordou em nos ajudar."
+        }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "be",
+        "past": "was/were",
+        "participle": "been",
+        "translation": "ser/estar",
+        "present_example": {
+            "eng": "They are happy.",
+            "ipa": "ðeɪ ɑr ˈhæpi",
+            "por": "Eles estão felizes."
+        },
+        "past_example": {
+            "eng": "I was at home yesterday.",
+            "ipa": "aɪ wʌz æt hoʊm ˈjɛstərˌdeɪ",
+            "por": "Eu estava em casa ontem."
+        }
+    }
+]
