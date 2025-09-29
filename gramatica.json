@@ -1,4 +1,39 @@
 {
+  "preposicoes": {
+    "tempo": [
+      { "eng": "The meeting is at 3 PM.", "ipa": "/ðə ˈmitɪŋ ɪz æt 3 pi.ɛm./", "por": "A reunião é às 3 da tarde." },
+      { "eng": "I was born in 1990.", "ipa": "/aɪ wʌz bɔrn ɪn 1990/", "por": "Eu nasci em 1990." },
+      { "eng": "My birthday is on October 25th.", "ipa": "/maɪ ˈbɜrθˌdeɪ ɪz ɑn ɑkˈtoʊbər 25th/", "por": "Meu aniversário é em 25 de outubro." },
+      { "eng": "He goes to the gym in the morning.", "ipa": "/hi goʊz tu ðə ʤɪm ɪn ðə ˈmɔrnɪŋ/", "por": "Ele vai para a academia de manhã." },
+      { "eng": "We have a test on Friday.", "ipa": "/wi hæv ə tɛst ɑn ˈfraɪdeɪ/", "por": "Nós temos uma prova na sexta-feira." }
+    ],
+    "lugar": [
+      { "eng": "The cat is in the box.", "ipa": "/ðə kæt ɪz ɪn ðə bɑks/", "por": "O gato está na caixa." },
+      { "eng": "The book is on the table.", "ipa": "/ðə bʊk ɪz ɑn ðə ˈteɪbəl/", "por": "O livro está na mesa." },
+      { "eng": "I will meet you at the bus stop.", "ipa": "/aɪ wɪl mit ju æt ðə bʌs stɑp/", "por": "Eu te encontrarei no ponto de ônibus." },
+      { "eng": "She lives in Brazil.", "ipa": "/ʃi lɪvz ɪn brəˈzɪl/", "por": "Ela mora no Brasil." },
+      { "eng": "The picture is on the wall.", "ipa": "/ðə ˈpɪkʧər ɪz ɑn ðə wɔl/", "por": "O quadro está na parede." }
+    ],
+    "movimento": [
+      { "eng": "She goes to school every day.", "ipa": "/ʃi goʊz tu skul ˈɛvəri deɪ/", "por": "Ela vai para a escola todos os dias." },
+      { "eng": "The train comes from Paris.", "ipa": "/ðə treɪn kʌmz frʌm ˈpɛrɪs/", "por": "O trem vem de Paris." },
+      { "eng": "He jumped into the pool.", "ipa": "/hi ʤʌmpt ˈɪntu ðə pul/", "por": "Ele pulou na piscina." },
+      { "eng": "Take the book out of the bag.", "ipa": "/teɪk ðə bʊk aʊt ʌv ðə bæg/", "por": "Tire o livro da bolsa." },
+      { "eng": "The cat ran across the street.", "ipa": "/ðə kæt ræn əˈkrɔs ðə strit/", "por": "O gato correu pela rua." }
+    ]
+  },
+  "phrasalverbs": [
+    { "verb": "give up", "meaning": "desistir", "example_eng": "Don't give up on your dreams.", "ipa": "/doʊnt gɪv ʌp ɑn jʊər drimz/", "example_por": "Não desista dos seus sonhos." },
+    { "verb": "look for", "meaning": "procurar", "example_eng": "I am looking for my keys.", "ipa": "/aɪ æm ˈlʊkɪŋ fɔr maɪ kiz/", "example_por": "Eu estou procurando minhas chaves." },
+    { "verb": "turn on", "meaning": "ligar, acender", "example_eng": "Please turn on the light.", "ipa": "/pliz tɜrn ɑn ðə laɪt/", "example_por": "Por favor, acenda a luz." },
+    { "verb": "turn off", "meaning": "desligar, apagar", "example_eng": "Turn off the TV before you sleep.", "ipa": "/tɜrn ɔf ðə ˈtiˈvi bɪˈfɔr ju slip/", "example_por": "Desligue a TV antes de dormir." },
+    { "verb": "get up", "meaning": "levantar-se", "example_eng": "I get up at 7 AM every day.", "ipa": "/aɪ gɛt ʌp æt 7 eɪ.ɛm. ˈɛvəri deɪ/", "example_por": "Eu me levanto às 7 da manhã todos os dias." },
+    { "verb": "find out", "meaning": "descobrir", "example_eng": "I need to find out the truth.", "ipa": "/aɪ nid tu faɪnd aʊt ðə truθ/", "example_por": "Eu preciso descobrir a verdade." },
+    { "verb": "put on", "meaning": "vestir", "example_eng": "Put on your coat, it's cold outside.", "ipa": "/pʊt ɑn jʊər koʊt, ɪts koʊld ˌaʊtˈsaɪd/", "example_por": "Vista seu casaco, está frio lá fora." },
+    { "verb": "take off", "meaning": "tirar (roupa), decolar (avião)", "example_eng": "The plane will take off soon.", "ipa": "/ðə pleɪn wɪl teɪk ɔf sun/", "example_por": "O avião vai decolar em breve." },
+    { "verb": "look after", "meaning": "cuidar de", "example_eng": "Can you look after my dog?", "ipa": "/kæn ju lʊk ˈæftər maɪ dɔg/", "example_por": "Você pode cuidar do meu cachorro?" },
+    { "verb": "go on", "meaning": "continuar, acontecer", "example_eng": "What's going on here?", "ipa": "/wʌts ˈgoʊɪŋ ɑn hir/", "example_por": "O que está acontecendo aqui?" }
+  ],
   "perguntas": [
     { "eng": "What is your name?", "ipa": "/wʌt ɪz jʊər neɪm/", "por": "Qual é o seu nome?" },
     { "eng": "My name is John.", "ipa": "/maɪ neɪm ɪz ʤɑn/", "por": "Meu nome é John." },
