@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tab.classList.add('active');
         document.getElementById(tabName).classList.add('active');
 
-        // Renderiza o conteúdo da aba se for a primeira vez
         if (!contentRendered.has(tabName)) {
             renderContentForTab(tabName);
             contentRendered.add(tabName);
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'pilares':
                     renderPilares(container);
                     break;
-                // Adicione casos para outras abas aqui
                 case 'conversacoes':
                     const convos = await fetchData('conversacoes.json');
                     renderConversations(container, convos);
@@ -97,49 +95,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderVerbs = (container, verbs, type) => {
         const filteredVerbs = verbs.filter(v => v.type === type);
-        let html = `<div class="content-grid">`;
+        container.innerHTML = `<h2>Verbos ${type === 'regular' ? 'Regulares' : 'Irregulares'} (${filteredVerbs.length})</h2><div class="content-grid"></div>`;
+        const grid = container.querySelector('.content-grid');
+        let html = '';
         filteredVerbs.forEach(verb => {
             html += `
                 <div class="content-item searchable-item" data-search-term="${verb.infinitive} ${verb.past} ${verb.participle} ${verb.translation}">
                     <h3>${verb.infinitive} / ${verb.past} / ${verb.participle}</h3>
+                    <p class="translation-line"><em>${verb.translation}</em></p>
                     ${createStackedTranslationHTML(verb.present_example.eng, verb.present_example.ipa, verb.present_example.por)}
                     ${createStackedTranslationHTML(verb.past_example.eng, verb.past_example.ipa, verb.past_example.por)}
                 </div>
             `;
         });
-        html += `</div>`;
-        container.innerHTML = html;
+        grid.innerHTML = html;
         addTTSListeners(container);
     };
     
+    // --- GERAÇÃO PROGRAMÁTICA DOS PILARES ---
     const renderPilares = (container) => {
-      // Função simplificada para gerar o conteúdo massivo dos pilares
-      // Na aplicação real, isso viria de um JSON ou seria gerado mais programaticamente
-      container.innerHTML = `
-        <div class="pillar-section searchable-item">
-          <h2>To Be - Present</h2>
-          <h3>Pronome: I</h3>
-          ${createStackedTranslationHTML('I am a teacher.', 'aɪ æm ə ˈtitʃər', 'Eu sou um professor.')}
-          ${createStackedTranslationHTML('I am not a teacher.', 'aɪ æm nɒt ə ˈtitʃər', 'Eu não sou um professor.')}
-          ${createStackedTranslationHTML('Am I a teacher?', 'æm aɪ ə ˈtitʃər', 'Sou eu um professor?')}
-          ${createStackedTranslationHTML('Am I not a teacher?', 'æm aɪ nɒt ə ˈtitʃər', 'Não sou eu um professor?')}
-          <h3>Pronome: You</h3>
-          ${createStackedTranslationHTML('You are a student.', 'ju ɑr ə ˈstudənt', 'Você é um estudante.')}
-          ${createStackedTranslationHTML('You are not a student.', 'ju ɑr nɒt ə ˈstudənt', 'Você não é um estudante.')}
-          </div>
-          <div class="pillar-section searchable-item">
-          <h2>Simple Past</h2>
-           <h3>Pronome: She</h3>
-          ${createStackedTranslationHTML('She worked yesterday.', 'ʃi wɜrkt ˈjɛstərˌdeɪ', 'Ela trabalhou ontem.')}
-        </div>
-      `;
-      addTTSListeners(container);
+        const pronouns = [
+            { subj: 'I', obj: 'me', a:'am', b:'do', c: 'have' },
+            { subj: 'You', obj: 'you', a:'are', b:'do', c: 'have' },
+            { subj: 'He', obj: 'him', a:'is', b:'does', c: 'has' },
+            { subj: 'She', obj: 'her', a:'is', b:'does', c: 'has' },
+            { subj: 'It', obj: 'it', a:'is', b:'does', c: 'has' },
+            { subj: 'We', obj: 'us', a:'are', b:'do', c: 'have' },
+            { subj: 'They', obj: 'them', a:'are', b:'do', c: 'have' },
+        ];
+        
+        let html = '<h2>⚖️ Pilares Fundamentais</h2>';
+        
+        // --- TO BE ---
+        html += '<div class="pillar-section"><h3>Verbo To Be (Presente, Passado, Futuro)</h3>';
+        pronouns.forEach(p => {
+            html += `<h4>Pronome: ${p.subj}</h4>`;
+            // Present
+            html += createStackedTranslationHTML(`${p.subj} ${p.a} happy.`, `...`, `(${p.subj} - Afirmativa Presente)`);
+            html += createStackedTranslationHTML(`${p.subj} ${p.a} not happy.`, `...`, `(${p.subj} - Negativa Presente)`);
+            // Past
+            const wasWere = (p.subj === 'I' || p.subj === 'He' || p.subj === 'She' || p.subj === 'It') ? 'was' : 'were';
+            html += createStackedTranslationHTML(`${p.subj} ${wasWere} sad.`, `...`, `(${p.subj} - Afirmativa Passado)`);
+            html += createStackedTranslationHTML(`${p.subj} ${wasWere} not sad.`, `...`, `(${p.subj} - Negativa Passado)`);
+            // Future
+            html += createStackedTranslationHTML(`${p.subj} will be an engineer.`, `...`, `(${p.subj} - Afirmativa Futuro)`);
+            html += createStackedTranslationHTML(`${p.subj} will not be an engineer.`, `...`, `(${p.subj} - Negativa Futuro)`);
+        });
+        html += '</div>';
+
+        // --- SIMPLE TENSES (com verbo 'work') ---
+        html += '<div class="pillar-section"><h3>Simple Tenses (com "work")</h3>';
+        pronouns.forEach(p => {
+            const verb = (p.subj === 'He' || p.subj === 'She' || p.subj === 'It') ? 'works' : 'work';
+            html += `<h4>Pronome: ${p.subj}</h4>`;
+            // Simple Present
+            html += createStackedTranslationHTML(`${p.subj} ${verb} here.`, `...`, `(${p.subj} - Afirmativa Presente)`);
+            html += createStackedTranslationHTML(`${p.b === 'does' ? 'Does' : 'Do'} ${p.subj} work here?`, `...`, `(${p.subj} - Interrogativa Presente)`);
+             // Simple Past
+            html += createStackedTranslationHTML(`${p.subj} worked yesterday.`, `...`, `(${p.subj} - Afirmativa Passado)`);
+            html += createStackedTranslationHTML(`Did ${p.subj} work yesterday?`, `...`, `(${p.subj} - Interrogativa Passado)`);
+             // Simple Future
+            html += createStackedTranslationHTML(`${p.subj} will work tomorrow.`, `...`, `(${p.subj} - Afirmativa Futuro)`);
+            html += createStackedTranslationHTML(`Will ${p.subj} work tomorrow?`, `...`, `(${p.subj} - Interrogativa Futuro)`);
+        });
+        html += '</div>';
+
+        container.innerHTML = html;
+        addTTSListeners(container);
     };
 
     const renderConversations = (container, data) => {
         let html = '';
         for (const level in data) {
-            html += `<h2>${level.toUpperCase()}</h2>`;
+            html += `<h2>Nível ${level.toUpperCase()}</h2>`;
             data[level].forEach(convo => {
                 html += `<div class="conversation-block searchable-item" data-search-term="${convo.title}"><h4>${convo.title}</h4>`;
                 convo.dialogue.forEach(line => {
@@ -153,7 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderGenericList = (container, data, title) => {
-        let html = `<h2>${title}</h2><div class="content-grid">`;
+        container.innerHTML = `<h2>${title} (${data.length})</h2><div class="content-grid"></div>`;
+        const grid = container.querySelector('.content-grid');
+        let html = '';
         data.forEach(item => {
             html += `
                 <div class="content-item searchable-item" data-search-term="${item.eng} ${item.por}">
@@ -161,11 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         });
-        html += `</div>`;
-        container.innerHTML = html;
+        grid.innerHTML = html;
         addTTSListeners(container);
     };
-
 
     // --- FUNCIONALIDADES CORE ---
     const fetchData = async (file) => {
@@ -195,10 +223,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const applyTranslationVisibility = () => {
         if (translationsVisible) {
-            mainContainer.classList.remove('hide-translation');
+            document.body.classList.remove('hide-translation');
             translationToggle.textContent = 'Tradução: ON';
         } else {
-            mainContainer.classList.add('hide-translation');
+            document.body.classList.add('hide-translation');
             translationToggle.textContent = 'Tradução: OFF';
         }
     };
@@ -210,28 +238,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const items = activeContent.querySelectorAll('.searchable-item');
         items.forEach(item => {
-            const itemText = item.dataset.searchTerm || item.textContent;
-            if (itemText.toLowerCase().includes(searchTerm)) {
-                item.classList.remove('hidden');
-            } else {
-                item.classList.add('hidden');
-            }
+            const itemText = (item.dataset.searchTerm || item.textContent).toLowerCase();
+            item.style.display = itemText.includes(searchTerm) ? '' : 'none';
         });
     };
 
     // --- TEXT-TO-SPEECH (TTS) ---
     const addTTSListeners = (container) => {
-        const ttsButtons = container.querySelectorAll('.tts-button');
-        ttsButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
+        container.addEventListener('click', (e) => {
+            if (e.target.classList.contains('tts-button')) {
                 const textToSpeak = e.target.nextElementSibling.textContent;
                 speak(textToSpeak, e.target);
-            });
+            }
         });
     };
 
     const speak = (text, buttonEl) => {
-        speechSynthesis.cancel(); // Cancela falas anteriores
+        speechSynthesis.cancel(); 
 
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'en-US';

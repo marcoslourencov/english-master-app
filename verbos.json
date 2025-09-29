@@ -1,36 +1,620 @@
 [
     {
         "type": "regular",
-        "infinitive": "agree",
-        "past": "agreed",
-        "participle": "agreed",
-        "translation": "concordar",
-        "present_example": {
-            "eng": "We agree with your decision.",
-            "ipa": "wi əˈgri wɪθ jʊər dɪˈsɪʒən",
-            "por": "Nós concordamos com sua decisão."
-        },
-        "past_example": {
-            "eng": "She agreed to help us.",
-            "ipa": "ʃi əˈgrid tu hɛlp ʌs",
-            "por": "Ela concordou em nos ajudar."
-        }
+        "infinitive": "accept", "past": "accepted", "participle": "accepted", "translation": "aceitar",
+        "present_example": { "eng": "I accept your apology.", "ipa": "/aɪ əkˈsɛpt jʊər əˈpɑləʤi/", "por": "Eu aceito seu pedido de desculpas." },
+        "past_example": { "eng": "She accepted the job offer.", "ipa": "/ʃi əkˈsɛptɪd ðə ʤɑb ˈɔfər/", "por": "Ela aceitou a oferta de emprego." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "ask", "past": "asked", "participle": "asked", "translation": "perguntar",
+        "present_example": { "eng": "He asks too many questions.", "ipa": "/hi æsks tu ˈmɛni ˈkwɛsʧənz/", "por": "Ele faz perguntas demais." },
+        "past_example": { "eng": "They asked for directions.", "ipa": "/ðeɪ æskt fɔr dəˈrɛkʃənz/", "por": "Eles pediram informações." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "call", "past": "called", "participle": "called", "translation": "chamar, ligar",
+        "present_example": { "eng": "Call me tomorrow.", "ipa": "/kɔl mi təˈmɑˌroʊ/", "por": "Me ligue amanhã." },
+        "past_example": { "eng": "He called his mother yesterday.", "ipa": "/hi kɔld hɪz ˈmʌðər ˈjɛstərˌdeɪ/", "por": "Ele ligou para a mãe dele ontem." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "clean", "past": "cleaned", "participle": "cleaned", "translation": "limpar",
+        "present_example": { "eng": "We clean the house every week.", "ipa": "/wi klin ðə haʊs ˈɛvəri wik/", "por": "Nós limpamos a casa toda semana." },
+        "past_example": { "eng": "I cleaned my room this morning.", "ipa": "/aɪ klind maɪ rum ðɪs ˈmɔrnɪŋ/", "por": "Eu limpei meu quarto esta manhã." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "close", "past": "closed", "participle": "closed", "translation": "fechar",
+        "present_example": { "eng": "Please close the door.", "ipa": "/pliz kloʊz ðə dɔr/", "por": "Por favor, feche a porta." },
+        "past_example": { "eng": "The shop closed at 9 PM.", "ipa": "/ðə ʃɑp kloʊzd æt 9 PM/", "por": "A loja fechou às 21h." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "cook", "past": "cooked", "participle": "cooked", "translation": "cozinhar",
+        "present_example": { "eng": "My father cooks dinner.", "ipa": "/maɪ ˈfɑðər kʊks ˈdɪnər/", "por": "Meu pai cozinha o jantar." },
+        "past_example": { "eng": "She cooked a delicious meal.", "ipa": "/ʃi kʊkt ə dɪˈlɪʃəs mil/", "por": "Ela cozinhou uma refeição deliciosa." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "dance", "past": "danced", "participle": "danced", "translation": "dançar",
+        "present_example": { "eng": "They dance very well.", "ipa": "/ðeɪ dæns ˈvɛri wɛl/", "por": "Eles dançam muito bem." },
+        "past_example": { "eng": "We danced all night.", "ipa": "/wi dænst ɔl naɪt/", "por": "Nós dançamos a noite toda." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "enjoy", "past": "enjoyed", "participle": "enjoyed", "translation": "aproveitar, gostar",
+        "present_example": { "eng": "I enjoy reading books.", "ipa": "/aɪ ɛnˈʤɔɪ ˈridɪŋ bʊks/", "por": "Eu gosto de ler livros." },
+        "past_example": { "eng": "He enjoyed the party.", "ipa": "/hi ɛnˈʤɔɪd ðə ˈpɑrti/", "por": "Ele aproveitou a festa." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "finish", "past": "finished", "participle": "finished", "translation": "terminar",
+        "present_example": { "eng": "She needs to finish her homework.", "ipa": "/ʃi nidz tu ˈfɪnɪʃ hɜr ˈhoʊmˌwɜrk/", "por": "Ela precisa terminar o dever de casa." },
+        "past_example": { "eng": "I finished the project last week.", "ipa": "/aɪ ˈfɪnɪʃt ðə ˈprɑʤɛkt læst wik/", "por": "Eu terminei o projeto na semana passada." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "help", "past": "helped", "participle": "helped", "translation": "ajudar",
+        "present_example": { "eng": "Can you help me?", "ipa": "/kæn ju hɛlp mi/", "por": "Você pode me ajudar?" },
+        "past_example": { "eng": "He helped the old lady.", "ipa": "/hi hɛlpt ði oʊld ˈleɪdi/", "por": "Ele ajudou a senhora idosa." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "invite", "past": "invited", "participle": "invited", "translation": "convidar",
+        "present_example": { "eng": "We invite them to our house.", "ipa": "/wi ɪnˈvaɪt ðɛm tu aʊər haʊs/", "por": "Nós os convidamos para nossa casa." },
+        "past_example": { "eng": "She invited all her friends.", "ipa": "/ʃi ɪnˈvaɪtɪd ɔl hɜr frɛndz/", "por": "Ela convidou todos os seus amigos." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "jump", "past": "jumped", "participle": "jumped", "translation": "pular",
+        "present_example": { "eng": "The kids jump on the bed.", "ipa": "/ðə kɪdz ʤʌmp ɑn ðə bɛd/", "por": "As crianças pulam na cama." },
+        "past_example": { "eng": "The cat jumped over the fence.", "ipa": "/ðə kæt ʤʌmpt ˈoʊvər ðə fɛns/", "por": "O gato pulou a cerca." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "like", "past": "liked", "participle": "liked", "translation": "gostar",
+        "present_example": { "eng": "I like your new car.", "ipa": "/aɪ laɪk jʊər nu kɑr/", "por": "Eu gosto do seu carro novo." },
+        "past_example": { "eng": "She liked the movie.", "ipa": "/ʃi laɪkt ðə ˈmuvi/", "por": "Ela gostou do filme." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "listen", "past": "listened", "participle": "listened", "translation": "escutar",
+        "present_example": { "eng": "I listen to music every day.", "ipa": "/aɪ ˈlɪsən tu ˈmjuzɪk ˈɛvəri deɪ/", "por": "Eu escuto música todos os dias." },
+        "past_example": { "eng": "He listened to the news.", "ipa": "/hi ˈlɪsənd tu ðə nuz/", "por": "Ele ouviu as notícias." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "live", "past": "lived", "participle": "lived", "translation": "viver, morar",
+        "present_example": { "eng": "They live in a big city.", "ipa": "/ðeɪ lɪv ɪn ə bɪg ˈsɪti/", "por": "Eles moram em uma cidade grande." },
+        "past_example": { "eng": "My grandparents lived here.", "ipa": "/maɪ ˈgrændˌpɛrənts lɪvd hir/", "por": "Meus avós moravam aqui." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "look", "past": "looked", "participle": "looked", "translation": "olhar",
+        "present_example": { "eng": "Look at the beautiful sunset.", "ipa": "/lʊk æt ðə ˈbjutəfəl ˈsʌnˌsɛt/", "por": "Olhe para o belo pôr do sol." },
+        "past_example": { "eng": "She looked out the window.", "ipa": "/ʃi lʊkt aʊt ðə ˈwɪndoʊ/", "por": "Ela olhou pela janela." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "love", "past": "loved", "participle": "loved", "translation": "amar",
+        "present_example": { "eng": "I love my family.", "ipa": "/aɪ lʌv maɪ ˈfæməli/", "por": "Eu amo minha família." },
+        "past_example": { "eng": "He loved that dog very much.", "ipa": "/hi lʌvd ðæt dɔg ˈvɛri mʌʧ/", "por": "Ele amava muito aquele cachorro." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "move", "past": "moved", "participle": "moved", "translation": "mover, mudar-se",
+        "present_example": { "eng": "We need to move the table.", "ipa": "/wi nid tu muv ðə ˈteɪbəl/", "por": "Nós precisamos mover a mesa." },
+        "past_example": { "eng": "They moved to a new house.", "ipa": "/ðeɪ muvd tu ə nu haʊs/", "por": "Eles se mudaram para uma casa nova." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "need", "past": "needed", "participle": "needed", "translation": "precisar",
+        "present_example": { "eng": "I need some help.", "ipa": "/aɪ nid sʌm hɛlp/", "por": "Eu preciso de ajuda." },
+        "past_example": { "eng": "She needed a new pair of shoes.", "ipa": "/ʃi ˈnidɪd ə nu pɛr ʌv ʃuz/", "por": "Ela precisava de um novo par de sapatos." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "open", "past": "opened", "participle": "opened", "translation": "abrir",
+        "present_example": { "eng": "The bank opens at 10 AM.", "ipa": "/ðə bæŋk ˈoʊpənz æt 10 AM/", "por": "O banco abre às 10h." },
+        "past_example": { "eng": "He opened the gift.", "ipa": "/hi ˈoʊpənd ðə gɪft/", "por": "Ele abriu o presente." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "paint", "past": "painted", "participle": "painted", "translation": "pintar",
+        "present_example": { "eng": "She paints beautiful pictures.", "ipa": "/ʃi peɪnts ˈbjutəfəl ˈpɪkʧərz/", "por": "Ela pinta quadros lindos." },
+        "past_example": { "eng": "They painted the room blue.", "ipa": "/ðeɪ ˈpeɪntɪd ðə rum blu/", "por": "Eles pintaram o quarto de azul." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "play", "past": "played", "participle": "played", "translation": "jogar, brincar, tocar",
+        "present_example": { "eng": "The children play in the park.", "ipa": "/ðə ˈʧɪldrən pleɪ ɪn ðə pɑrk/", "por": "As crianças brincam no parque." },
+        "past_example": { "eng": "He played the guitar.", "ipa": "/hi pleɪd ðə gɪˈtɑr/", "por": "Ele tocou violão." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "rain", "past": "rained", "participle": "rained", "translation": "chover",
+        "present_example": { "eng": "It rains a lot here.", "ipa": "/ɪt reɪnz ə lɑt hir/", "por": "Chove muito aqui." },
+        "past_example": { "eng": "It rained all day yesterday.", "ipa": "/ɪt reɪnd ɔl deɪ ˈjɛstərˌdeɪ/", "por": "Choveu o dia todo ontem." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "remember", "past": "remembered", "participle": "remembered", "translation": "lembrar",
+        "present_example": { "eng": "I remember his name.", "ipa": "/aɪ rɪˈmɛmbər hɪz neɪm/", "por": "Eu me lembro do nome dele." },
+        "past_example": { "eng": "She remembered to buy milk.", "ipa": "/ʃi rɪˈmɛmbərd tu baɪ mɪlk/", "por": "Ela se lembrou de comprar leite." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "show", "past": "showed", "participle": "shown", "translation": "mostrar",
+        "present_example": { "eng": "Show me your new phone.", "ipa": "/ʃoʊ mi jʊər nu foʊn/", "por": "Me mostre seu novo telefone." },
+        "past_example": { "eng": "He showed me the pictures.", "ipa": "/hi ʃoʊd mi ðə ˈpɪkʧərz/", "por": "Ele me mostrou as fotos." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "start", "past": "started", "participle": "started", "translation": "começar",
+        "present_example": { "eng": "The movie starts in five minutes.", "ipa": "/ðə ˈmuvi stɑrts ɪn faɪv ˈmɪnəts/", "por": "O filme começa em cinco minutos." },
+        "past_example": { "eng": "She started a new company.", "ipa": "/ʃi ˈstɑrtɪd ə nu ˈkʌmpəni/", "por": "Ela começou uma nova empresa." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "stay", "past": "stayed", "participle": "stayed", "translation": "ficar, permanecer",
+        "present_example": { "eng": "Let's stay home tonight.", "ipa": "/lɛts steɪ hoʊm təˈnaɪt/", "por": "Vamos ficar em casa esta noite." },
+        "past_example": { "eng": "They stayed at a nice hotel.", "ipa": "/ðeɪ steɪd æt ə naɪs hoʊˈtɛl/", "por": "Eles ficaram em um hotel legal." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "stop", "past": "stopped", "participle": "stopped", "translation": "parar",
+        "present_example": { "eng": "The bus stops here.", "ipa": "/ðə bʌs stɑps hir/", "por": "O ônibus para aqui." },
+        "past_example": { "eng": "The car stopped suddenly.", "ipa": "/ðə kɑr stɑpt ˈsʌdənli/", "por": "O carro parou de repente." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "study", "past": "studied", "participle": "studied", "translation": "estudar",
+        "present_example": { "eng": "I need to study for the test.", "ipa": "/aɪ nid tu ˈstʌdi fɔr ðə tɛst/", "por": "Eu preciso estudar para a prova." },
+        "past_example": { "eng": "He studied English for many years.", "ipa": "/hi ˈstʌdid ˈɪŋglɪʃ fɔr ˈmɛni jɪrz/", "por": "Ele estudou inglês por muitos anos." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "talk", "past": "talked", "participle": "talked", "translation": "conversar",
+        "present_example": { "eng": "They talk on the phone.", "ipa": "/ðeɪ tɔk ɑn ðə foʊn/", "por": "Eles conversam ao telefone." },
+        "past_example": { "eng": "We talked for hours.", "ipa": "/wi tɔkt fɔr ˈaʊərz/", "por": "Nós conversamos por horas." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "travel", "past": "traveled", "participle": "traveled", "translation": "viajar",
+        "present_example": { "eng": "I love to travel.", "ipa": "/aɪ lʌv tu ˈtrævəl/", "por": "Eu amo viajar." },
+        "past_example": { "eng": "She traveled around the world.", "ipa": "/ʃi ˈtrævəld əˈraʊnd ðə wɜrld/", "por": "Ela viajou ao redor do mundo." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "try", "past": "tried", "participle": "tried", "translation": "tentar, experimentar",
+        "present_example": { "eng": "You should try this cake.", "ipa": "/ju ʃʊd traɪ ðɪs keɪk/", "por": "Você deveria experimentar este bolo." },
+        "past_example": { "eng": "He tried to open the door.", "ipa": "/hi traɪd tu ˈoʊpən ðə dɔr/", "por": "Ele tentou abrir a porta." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "use", "past": "used", "participle": "used", "translation": "usar",
+        "present_example": { "eng": "Can I use your pen?", "ipa": "/kæn aɪ juz jʊər pɛn/", "por": "Posso usar sua caneta?" },
+        "past_example": { "eng": "She used the computer.", "ipa": "/ʃi juzd ðə kəmˈpjutər/", "por": "Ela usou o computador." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "visit", "past": "visited", "participle": "visited", "translation": "visitar",
+        "present_example": { "eng": "We visit our grandparents often.", "ipa": "/wi ˈvɪzɪt ˈaʊər ˈgrændˌpɛrənts ˈɔfən/", "por": "Nós visitamos nossos avós com frequência." },
+        "past_example": { "eng": "They visited Paris last summer.", "ipa": "/ðeɪ ˈvɪzɪtɪd ˈpɛrɪs læst ˈsʌmər/", "por": "Eles visitaram Paris no verão passado." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "wait", "past": "waited", "participle": "waited", "translation": "esperar",
+        "present_example": { "eng": "Wait for me!", "ipa": "/weɪt fɔr mi/", "por": "Espere por mim!" },
+        "past_example": { "eng": "I waited for a long time.", "ipa": "/aɪ ˈweɪtɪd fɔr ə lɔŋ taɪm/", "por": "Eu esperei por muito tempo." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "walk", "past": "walked", "participle": "walked", "translation": "andar, caminhar",
+        "present_example": { "eng": "I walk to work.", "ipa": "/aɪ wɔk tu wɜrk/", "por": "Eu vou para o trabalho a pé." },
+        "past_example": { "eng": "She walked the dog.", "ipa": "/ʃi wɔkt ðə dɔg/", "por": "Ela passeou com o cachorro." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "want", "past": "wanted", "participle": "wanted", "translation": "querer",
+        "present_example": { "eng": "What do you want?", "ipa": "/wʌt du ju wɑnt/", "por": "O que você quer?" },
+        "past_example": { "eng": "He wanted a new bike.", "ipa": "/hi ˈwɑntɪd ə nu baɪk/", "por": "Ele queria uma bicicleta nova." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "wash", "past": "washed", "participle": "washed", "translation": "lavar",
+        "present_example": { "eng": "Wash your hands before eating.", "ipa": "/wɑʃ jʊər hændz bɪˈfɔr ˈitɪŋ/", "por": "Lave as mãos antes de comer." },
+        "past_example": { "eng": "I washed the dishes.", "ipa": "/aɪ wɑʃt ðə ˈdɪʃəz/", "por": "Eu lavei a louça." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "watch", "past": "watched", "participle": "watched", "translation": "assistir",
+        "present_example": { "eng": "We watch a movie every Friday.", "ipa": "/wi wɑʧ ə ˈmuvi ˈɛvəri ˈfraɪdeɪ/", "por": "Nós assistimos a um filme toda sexta-feira." },
+        "past_example": { "eng": "He watched the football game.", "ipa": "/hi wɑʧt ðə ˈfʊtˌbɔl geɪm/", "por": "Ele assistiu ao jogo de futebol." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "work", "past": "worked", "participle": "worked", "translation": "trabalhar",
+        "present_example": { "eng": "I work in an office.", "ipa": "/aɪ wɜrk ɪn ən ˈɔfɪs/", "por": "Eu trabalho em um escritório." },
+        "past_example": { "eng": "She worked hard on the project.", "ipa": "/ʃi wɜrkt hɑrd ɑn ðə ˈprɑʤɛkt/", "por": "Ela trabalhou duro no projeto." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "answer", "past": "answered", "participle": "answered", "translation": "responder",
+        "present_example": { "eng": "Please answer the question.", "ipa": "/pliz ˈænsər ðə ˈkwɛsʧən/", "por": "Por favor, responda à pergunta." },
+        "past_example": { "eng": "He answered the phone.", "ipa": "/hi ˈænsərd ðə foʊn/", "por": "Ele atendeu o telefone." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "arrive", "past": "arrived", "participle": "arrived", "translation": "chegar",
+        "present_example": { "eng": "What time does the train arrive?", "ipa": "/wʌt taɪm dʌz ðə treɪn əˈraɪv/", "por": "A que horas o trem chega?" },
+        "past_example": { "eng": "They arrived late.", "ipa": "/ðeɪ əˈraɪvd leɪt/", "por": "Eles chegaram atrasados." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "believe", "past": "believed", "participle": "believed", "translation": "acreditar",
+        "present_example": { "eng": "I believe you.", "ipa": "/aɪ bɪˈliv ju/", "por": "Eu acredito em você." },
+        "past_example": { "eng": "Nobody believed his story.", "ipa": "/ˈnoʊˌbɑdi bɪˈlivd hɪz ˈstɔri/", "por": "Ninguém acreditou na história dele." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "change", "past": "changed", "participle": "changed", "translation": "mudar, trocar",
+        "present_example": { "eng": "People can change.", "ipa": "/ˈpipəl kæn ʧeɪnʤ/", "por": "As pessoas podem mudar." },
+        "past_example": { "eng": "She changed her mind.", "ipa": "/ʃi ʧeɪnʤd hɜr maɪnd/", "por": "Ela mudou de ideia." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "decide", "past": "decided", "participle": "decided", "translation": "decidir",
+        "present_example": { "eng": "You need to decide now.", "ipa": "/ju nid tu dɪˈsaɪd naʊ/", "por": "Você precisa decidir agora." },
+        "past_example": { "eng": "We decided to go home.", "ipa": "/wi dɪˈsaɪdɪd tu goʊ hoʊm/", "por": "Nós decidimos ir para casa." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "explain", "past": "explained", "participle": "explained", "translation": "explicar",
+        "present_example": { "eng": "Can you explain this to me?", "ipa": "/kæn ju ɪkˈspleɪn ðɪs tu mi/", "por": "Você pode me explicar isso?" },
+        "past_example": { "eng": "The teacher explained the lesson.", "ipa": "/ðə ˈtiʧər ɪkˈspleɪnd ðə ˈlɛsən/", "por": "O professor explicou a lição." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "happen", "past": "happened", "participle": "happened", "translation": "acontecer",
+        "present_example": { "eng": "Accidents happen.", "ipa": "/ˈæksədənts ˈhæpən/", "por": "Acidentes acontecem." },
+        "past_example": { "eng": "What happened?", "ipa": "/wʌt ˈhæpənd/", "por": "O que aconteceu?" }
+    },
+    {
+        "type": "regular",
+        "infinitive": "kill", "past": "killed", "participle": "killed", "translation": "matar",
+        "present_example": { "eng": "Smoking can kill you.", "ipa": "/ˈsmoʊkɪŋ kæn kɪl ju/", "por": "Fumar pode te matar." },
+        "past_example": { "eng": "The hunter killed a deer.", "ipa": "/ðə ˈhʌntər kɪld ə dɪr/", "por": "O caçador matou um cervo." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "miss", "past": "missed", "participle": "missed", "translation": "perder, sentir falta",
+        "present_example": { "eng": "I miss my family.", "ipa": "/aɪ mɪs maɪ ˈfæməli/", "por": "Eu sinto falta da minha família." },
+        "past_example": { "eng": "He missed the bus.", "ipa": "/hi mɪst ðə bʌs/", "por": "Ele perdeu o ônibus." }
+    },
+    {
+        "type": "regular",
+        "infinitive": "prepare", "past": "prepared", "participle": "prepared", "translation": "preparar",
+        "present_example": { "eng": "We need to prepare for the meeting.", "ipa": "/wi nid tu priˈpɛr fɔr ðə ˈmitɪŋ/", "por": "Precisamos nos preparar para a reunião." },
+        "past_example": { "eng": "She prepared a wonderful dinner.", "ipa": "/ʃi priˈpɛrd ə ˈwʌndərfəl ˈdɪnər/", "por": "Ela preparou um jantar maravilhoso." }
     },
     {
         "type": "irregular",
-        "infinitive": "be",
-        "past": "was/were",
-        "participle": "been",
-        "translation": "ser/estar",
-        "present_example": {
-            "eng": "They are happy.",
-            "ipa": "ðeɪ ɑr ˈhæpi",
-            "por": "Eles estão felizes."
-        },
-        "past_example": {
-            "eng": "I was at home yesterday.",
-            "ipa": "aɪ wʌz æt hoʊm ˈjɛstərˌdeɪ",
-            "por": "Eu estava em casa ontem."
-        }
+        "infinitive": "be", "past": "was/were", "participle": "been", "translation": "ser, estar",
+        "present_example": { "eng": "They are students.", "ipa": "/ðeɪ ɑr ˈstudənts/", "por": "Eles são estudantes." },
+        "past_example": { "eng": "I was tired yesterday.", "ipa": "/aɪ wʌz ˈtaɪərd ˈjɛstərˌdeɪ/", "por": "Eu estava cansado ontem." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "become", "past": "became", "participle": "become", "translation": "tornar-se",
+        "present_example": { "eng": "He wants to become a doctor.", "ipa": "/hi wɑnts tu bɪˈkʌm ə ˈdɑktər/", "por": "Ele quer se tornar um médico." },
+        "past_example": { "eng": "She became famous overnight.", "ipa": "/ʃi bɪˈkeɪm ˈfeɪməs ˈoʊvərˌnaɪt/", "por": "Ela se tornou famosa da noite para o dia." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "begin", "past": "began", "participle": "begun", "translation": "começar",
+        "present_example": { "eng": "The class begins at 8 AM.", "ipa": "/ðə klæs bɪˈgɪnz æt 8 AM/", "por": "A aula começa às 8h." },
+        "past_example": { "eng": "The concert began with a great song.", "ipa": "/ðə ˈkɑnsərt bɪˈgæn wɪθ ə greɪt sɔŋ/", "por": "O show começou com uma ótima música." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "break", "past": "broke", "participle": "broken", "translation": "quebrar",
+        "present_example": { "eng": "Be careful not to break the glass.", "ipa": "/bi ˈkɛrfəl nɑt tu breɪk ðə glæs/", "por": "Cuidado para não quebrar o copo." },
+        "past_example": { "eng": "He broke his arm.", "ipa": "/hi broʊk hɪz ɑrm/", "por": "Ele quebrou o braço." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "bring", "past": "brought", "participle": "brought", "translation": "trazer",
+        "present_example": { "eng": "Please bring me a glass of water.", "ipa": "/pliz brɪŋ mi ə glæs ʌv ˈwɔtər/", "por": "Por favor, traga-me um copo de água." },
+        "past_example": { "eng": "She brought a cake to the party.", "ipa": "/ʃi brɔt ə keɪk tu ðə ˈpɑrti/", "por": "Ela trouxe um bolo para a festa." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "build", "past": "built", "participle": "built", "translation": "construir",
+        "present_example": { "eng": "They build houses.", "ipa": "/ðeɪ bɪld ˈhaʊzəz/", "por": "Eles constroem casas." },
+        "past_example": { "eng": "The Romans built this bridge.", "ipa": "/ðə ˈroʊmənz bɪlt ðɪs brɪʤ/", "por": "Os romanos construíram esta ponte." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "buy", "past": "bought", "participle": "bought", "translation": "comprar",
+        "present_example": { "eng": "I need to buy some groceries.", "ipa": "/aɪ nid tu baɪ sʌm ˈgroʊsəriz/", "por": "Eu preciso comprar alguns mantimentos." },
+        "past_example": { "eng": "He bought a new car last month.", "ipa": "/hi bɔt ə nu kɑr læst mʌnθ/", "por": "Ele comprou um carro novo no mês passado." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "catch", "past": "caught", "participle": "caught", "translation": "pegar, apanhar",
+        "present_example": { "eng": "The dog tries to catch the ball.", "ipa": "/ðə dɔg traɪz tu kæʧ ðə bɔl/", "por": "O cachorro tenta pegar a bola." },
+        "past_example": { "eng": "The police caught the thief.", "ipa": "/ðə pəˈlis kɔt ðə θif/", "por": "A polícia pegou o ladrão." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "choose", "past": "chose", "participle": "chosen", "translation": "escolher",
+        "present_example": { "eng": "You must choose one option.", "ipa": "/ju mʌst ʧuz wʌn ˈɑpʃən/", "por": "Você deve escolher uma opção." },
+        "past_example": { "eng": "She chose the blue dress.", "ipa": "/ʃi ʧoʊz ðə blu drɛs/", "por": "Ela escolheu o vestido azul." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "come", "past": "came", "participle": "come", "translation": "vir",
+        "present_example": { "eng": "They come here often.", "ipa": "/ðeɪ kʌm hir ˈɔfən/", "por": "Eles vêm aqui com frequência." },
+        "past_example": { "eng": "He came to the party alone.", "ipa": "/hi keɪm tu ðə ˈpɑrti əˈloʊn/", "por": "Ele veio para a festa sozinho." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "cost", "past": "cost", "participle": "cost", "translation": "custar",
+        "present_example": { "eng": "How much does it cost?", "ipa": "/haʊ mʌʧ dʌz ɪt kɔst/", "por": "Quanto custa isso?" },
+        "past_example": { "eng": "The ticket cost fifty dollars.", "ipa": "/ðə ˈtɪkɪt kɔst ˈfɪfti ˈdɑlərz/", "por": "O ingresso custou cinquenta dólares." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "cut", "past": "cut", "participle": "cut", "translation": "cortar",
+        "present_example": { "eng": "Cut the vegetables into small pieces.", "ipa": "/kʌt ðə ˈvɛʤtəbəlz ˈɪntu smɔl ˈpisəz/", "por": "Corte os vegetais em pedaços pequenos." },
+        "past_example": { "eng": "I cut my finger.", "ipa": "/aɪ kʌt maɪ ˈfɪŋgər/", "por": "Eu cortei meu dedo." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "do", "past": "did", "participle": "done", "translation": "fazer",
+        "present_example": { "eng": "I do my homework in the evening.", "ipa": "/aɪ du maɪ ˈhoʊmˌwɜrk ɪn ði ˈivnɪŋ/", "por": "Eu faço meu dever de casa à noite." },
+        "past_example": { "eng": "What did you do?", "ipa": "/wʌt dɪd ju du/", "por": "O que você fez?" }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "draw", "past": "drew", "participle": "drawn", "translation": "desenhar",
+        "present_example": { "eng": "She can draw very well.", "ipa": "/ʃi kæn drɔ ˈvɛri wɛl/", "por": "Ela sabe desenhar muito bem." },
+        "past_example": { "eng": "The artist drew a portrait.", "ipa": "/ði ˈɑrtəst dru ə ˈpɔrtrət/", "por": "O artista desenhou um retrato." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "drink", "past": "drank", "participle": "drunk", "translation": "beber",
+        "present_example": { "eng": "I drink coffee every morning.", "ipa": "/aɪ drɪŋk ˈkɔfi ˈɛvəri ˈmɔrnɪŋ/", "por": "Eu bebo café toda manhã." },
+        "past_example": { "eng": "He drank all the juice.", "ipa": "/hi dræŋk ɔl ðə ʤus/", "por": "Ele bebeu todo o suco." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "drive", "past": "drove", "participle": "driven", "translation": "dirigir",
+        "present_example": { "eng": "She drives a red car.", "ipa": "/ʃi draɪvz ə rɛd kɑr/", "por": "Ela dirige um carro vermelho." },
+        "past_example": { "eng": "We drove to the beach.", "ipa": "/wi droʊv tu ðə biʧ/", "por": "Nós dirigimos para a praia." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "eat", "past": "ate", "participle": "eaten", "translation": "comer",
+        "present_example": { "eng": "What do you want to eat?", "ipa": "/wʌt du ju wɑnt tu it/", "por": "O que você quer comer?" },
+        "past_example": { "eng": "I ate a big breakfast.", "ipa": "/aɪ eɪt ə bɪg ˈbrɛkfəst/", "por": "Eu comi um grande café da manhã." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "fall", "past": "fell", "participle": "fallen", "translation": "cair",
+        "present_example": { "eng": "The leaves fall in autumn.", "ipa": "/ðə livz fɔl ɪn ˈɔtəm/", "por": "As folhas caem no outono." },
+        "past_example": { "eng": "He fell off the ladder.", "ipa": "/hi fɛl ɔf ðə ˈlædər/", "por": "Ele caiu da escada." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "feel", "past": "felt", "participle": "felt", "translation": "sentir",
+        "present_example": { "eng": "How do you feel?", "ipa": "/haʊ du ju fil/", "por": "Como você se sente?" },
+        "past_example": { "eng": "I felt sick.", "ipa": "/aɪ fɛlt sɪk/", "por": "Eu me senti doente." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "find", "past": "found", "participle": "found", "translation": "encontrar",
+        "present_example": { "eng": "I can't find my keys.", "ipa": "/aɪ kænt faɪnd maɪ kiz/", "por": "Não consigo encontrar minhas chaves." },
+        "past_example": { "eng": "She found a wallet on the street.", "ipa": "/ʃi faʊnd ə ˈwɔlət ɑn ðə strit/", "por": "Ela encontrou uma carteira na rua." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "fly", "past": "flew", "participle": "flown", "translation": "voar",
+        "present_example": { "eng": "Birds can fly.", "ipa": "/bɜrdz kæn flaɪ/", "por": "Pássaros podem voar." },
+        "past_example": { "eng": "We flew to New York.", "ipa": "/wi flu tu nu jɔrk/", "por": "Nós voamos para Nova York." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "forget", "past": "forgot", "participle": "forgotten", "translation": "esquecer",
+        "present_example": { "eng": "Don't forget your keys.", "ipa": "/doʊnt fərˈgɛt jʊər kiz/", "por": "Não se esqueça das suas chaves." },
+        "past_example": { "eng": "I forgot his name.", "ipa": "/aɪ fərˈgɑt hɪz neɪm/", "por": "Eu esqueci o nome dele." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "get", "past": "got", "participle": "gotten", "translation": "obter, pegar",
+        "present_example": { "eng": "I need to get some sleep.", "ipa": "/aɪ nid tu gɛt sʌm slip/", "por": "Eu preciso dormir um pouco." },
+        "past_example": { "eng": "She got a new job.", "ipa": "/ʃi gɑt ə nu ʤɑb/", "por": "Ela conseguiu um novo emprego." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "give", "past": "gave", "participle": "given", "translation": "dar",
+        "present_example": { "eng": "Can you give me a hand?", "ipa": "/kæn ju gɪv mi ə hænd/", "por": "Você pode me dar uma mão?" },
+        "past_example": { "eng": "He gave her a gift.", "ipa": "/hi geɪv hɜr ə gɪft/", "por": "Ele deu um presente a ela." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "go", "past": "went", "participle": "gone", "translation": "ir",
+        "present_example": { "eng": "We go to school by bus.", "ipa": "/wi goʊ tu skul baɪ bʌs/", "por": "Nós vamos para a escola de ônibus." },
+        "past_example": { "eng": "She went to the store.", "ipa": "/ʃi wɛnt tu ðə stɔr/", "por": "Ela foi à loja." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "have", "past": "had", "participle": "had", "translation": "ter",
+        "present_example": { "eng": "I have a car.", "ipa": "/aɪ hæv ə kɑr/", "por": "Eu tenho um carro." },
+        "past_example": { "eng": "They had a great time.", "ipa": "/ðeɪ hæd ə greɪt taɪm/", "por": "Eles se divertiram muito." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "hear", "past": "heard", "participle": "heard", "translation": "ouvir",
+        "present_example": { "eng": "Can you hear me?", "ipa": "/kæn ju hir mi/", "por": "Você pode me ouvir?" },
+        "past_example": { "eng": "I heard a strange noise.", "ipa": "/aɪ hɜrd ə streɪnʤ nɔɪz/", "por": "Eu ouvi um barulho estranho." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "know", "past": "knew", "participle": "known", "translation": "saber, conhecer",
+        "present_example": { "eng": "I know the answer.", "ipa": "/aɪ noʊ ði ˈænsər/", "por": "Eu sei a resposta." },
+        "past_example": { "eng": "She knew him from school.", "ipa": "/ʃi nu hɪm frʌm skul/", "por": "Ela o conhecia da escola." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "leave", "past": "left", "participle": "left", "translation": "sair, deixar",
+        "present_example": { "eng": "What time do you leave?", "ipa": "/wʌt taɪm du ju liv/", "por": "A que horas você sai?" },
+        "past_example": { "eng": "He left the book on the table.", "ipa": "/hi lɛft ðə bʊk ɑn ðə ˈteɪbəl/", "por": "Ele deixou o livro na mesa." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "lose", "past": "lost", "participle": "lost", "translation": "perder",
+        "present_example": { "eng": "Don't lose your ticket.", "ipa": "/doʊnt luz jʊər ˈtɪkɪt/", "por": "Não perca seu ingresso." },
+        "past_example": { "eng": "I lost my keys.", "ipa": "/aɪ lɔst maɪ kiz/", "por": "Eu perdi minhas chaves." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "make", "past": "made", "participle": "made", "translation": "fazer, fabricar",
+        "present_example": { "eng": "She makes her own clothes.", "ipa": "/ʃi meɪks hɜr oʊn kloʊðz/", "por": "Ela faz suas próprias roupas." },
+        "past_example": { "eng": "He made a mistake.", "ipa": "/hi meɪd ə mɪˈsteɪk/", "por": "Ele cometeu um erro." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "meet", "past": "met", "participle": "met", "translation": "encontrar, conhecer",
+        "present_example": { "eng": "Nice to meet you.", "ipa": "/naɪs tu mit ju/", "por": "Prazer em te conhecer." },
+        "past_example": { "eng": "We met at a conference.", "ipa": "/wi mɛt æt ə ˈkɑnfərəns/", "por": "Nós nos conhecemos em uma conferência." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "pay", "past": "paid", "participle": "paid", "translation": "pagar",
+        "present_example": { "eng": "I need to pay the bills.", "ipa": "/aɪ nid tu peɪ ðə bɪlz/", "por": "Eu preciso pagar as contas." },
+        "past_example": { "eng": "She paid for dinner.", "ipa": "/ʃi peɪd fɔr ˈdɪnər/", "por": "Ela pagou pelo jantar." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "put", "past": "put", "participle": "put", "translation": "colocar",
+        "present_example": { "eng": "Put the book on the shelf.", "ipa": "/pʊt ðə bʊk ɑn ðə ʃɛlf/", "por": "Coloque o livro na prateleira." },
+        "past_example": { "eng": "He put his coat on.", "ipa": "/hi pʊt hɪz koʊt ɑn/", "por": "Ele vestiu o casaco." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "read", "past": "read", "participle": "read", "translation": "ler",
+        "present_example": { "eng": "I read a lot of books.", "ipa": "/aɪ rid ə lɑt ʌv bʊks/", "por": "Eu leio muitos livros." },
+        "past_example": { "eng": "She read the letter.", "ipa": "/ʃi rɛd ðə ˈlɛtər/", "por": "Ela leu a carta." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "run", "past": "ran", "participle": "run", "translation": "correr",
+        "present_example": { "eng": "I run every morning.", "ipa": "/aɪ rʌn ˈɛvəri ˈmɔrnɪŋ/", "por": "Eu corro toda manhã." },
+        "past_example": { "eng": "The dog ran after the ball.", "ipa": "/ðə dɔg ræn ˈæftər ðə bɔl/", "por": "O cachorro correu atrás da bola." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "say", "past": "said", "participle": "said", "translation": "dizer",
+        "present_example": { "eng": "What did you say?", "ipa": "/wʌt dɪd ju seɪ/", "por": "O que você disse?" },
+        "past_example": { "eng": "He said goodbye.", "ipa": "/hi sɛd gʊdˈbaɪ/", "por": "Ele disse adeus." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "see", "past": "saw", "participle": "seen", "translation": "ver",
+        "present_example": { "eng": "I can see the mountains.", "ipa": "/aɪ kæn si ðə ˈmaʊntənz/", "por": "Eu consigo ver as montanhas." },
+        "past_example": { "eng": "I saw a movie last night.", "ipa": "/aɪ sɔ ə ˈmuvi læst naɪt/", "por": "Eu vi um filme ontem à noite." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "sell", "past": "sold", "participle": "sold", "translation": "vender",
+        "present_example": { "eng": "They sell fresh fruit.", "ipa": "/ðeɪ sɛl frɛʃ frut/", "por": "Eles vendem frutas frescas." },
+        "past_example": { "eng": "He sold his car.", "ipa": "/hi soʊld hɪz kɑr/", "por": "Ele vendeu o carro dele." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "send", "past": "sent", "participle": "sent", "translation": "enviar",
+        "present_example": { "eng": "I will send you an email.", "ipa": "/aɪ wɪl sɛnd ju ən iˈmeɪl/", "por": "Eu vou te enviar um e-mail." },
+        "past_example": { "eng": "She sent a letter to her grandmother.", "ipa": "/ʃi sɛnt ə ˈlɛtər tu hɜr ˈgrændˌmʌðər/", "por": "Ela enviou uma carta para sua avó." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "sing", "past": "sang", "participle": "sung", "translation": "cantar",
+        "present_example": { "eng": "She sings beautifully.", "ipa": "/ʃi sɪŋz ˈbjutəfəli/", "por": "Ela canta lindamente." },
+        "past_example": { "eng": "He sang his favorite song.", "ipa": "/hi sæŋ hɪz ˈfeɪvərɪt sɔŋ/", "por": "Ele cantou sua música favorita." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "sit", "past": "sat", "participle": "sat", "translation": "sentar",
+        "present_example": { "eng": "Please, sit down.", "ipa": "/pliz, sɪt daʊn/", "por": "Por favor, sente-se." },
+        "past_example": { "eng": "The cat sat on the mat.", "ipa": "/ðə kæt sæt ɑn ðə mæt/", "por": "O gato sentou no tapete." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "sleep", "past": "slept", "participle": "slept", "translation": "dormir",
+        "present_example": { "eng": "The baby sleeps a lot.", "ipa": "/ðə ˈbeɪbi slips ə lɑt/", "por": "O bebê dorme muito." },
+        "past_example": { "eng": "I slept for eight hours.", "ipa": "/aɪ slɛpt fɔr eɪt ˈaʊərz/", "por": "Eu dormi por oito horas." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "speak", "past": "spoke", "participle": "spoken", "translation": "falar",
+        "present_example": { "eng": "I speak English and Portuguese.", "ipa": "/aɪ spik ˈɪŋglɪʃ ænd ˌpɔrʧəˈgiz/", "por": "Eu falo inglês e português." },
+        "past_example": { "eng": "She spoke to the manager.", "ipa": "/ʃi spoʊk tu ðə ˈmænəʤər/", "por": "Ela falou com o gerente." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "spend", "past": "spent", "participle": "spent", "translation": "gastar, passar (tempo)",
+        "present_example": { "eng": "How much money do you spend?", "ipa": "/haʊ mʌʧ ˈmʌni du ju spɛnd/", "por": "Quanto dinheiro você gasta?" },
+        "past_example": { "eng": "We spent the weekend at the beach.", "ipa": "/wi spɛnt ðə ˈwikˌɛnd æt ðə biʧ/", "por": "Nós passamos o fim de semana na praia." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "swim", "past": "swam", "participle": "swum", "translation": "nadar",
+        "present_example": { "eng": "Fish can swim.", "ipa": "/fɪʃ kæn swɪm/", "por": "Peixes podem nadar." },
+        "past_example": { "eng": "I swam in the ocean.", "ipa": "/aɪ swæm ɪn ði ˈoʊʃən/", "por": "Eu nadei no oceano." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "take", "past": "took", "participle": "taken", "translation": "pegar, levar",
+        "present_example": { "eng": "I take the bus to work.", "ipa": "/aɪ teɪk ðə bʌs tu wɜrk/", "por": "Eu pego o ônibus para o trabalho." },
+        "past_example": { "eng": "He took a photo.", "ipa": "/hi tʊk ə ˈfoʊtoʊ/", "por": "Ele tirou uma foto." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "teach", "past": "taught", "participle": "taught", "translation": "ensinar",
+        "present_example": { "eng": "She teaches history.", "ipa": "/ʃi ˈtiʧəz ˈhɪstəri/", "por": "Ela ensina história." },
+        "past_example": { "eng": "My father taught me how to drive.", "ipa": "/maɪ ˈfɑðər tɔt mi haʊ tu draɪv/", "por": "Meu pai me ensinou a dirigir." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "tell", "past": "told", "participle": "told", "translation": "contar, dizer",
+        "present_example": { "eng": "Tell me a story.", "ipa": "/tɛl mi ə ˈstɔri/", "por": "Me conte uma história." },
+        "past_example": { "eng": "She told me the truth.", "ipa": "/ʃi toʊld mi ðə truθ/", "por": "Ela me disse a verdade." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "think", "past": "thought", "participle": "thought", "translation": "pensar, achar",
+        "present_example": { "eng": "What do you think?", "ipa": "/wʌt du ju θɪŋk/", "por": "O que você acha?" },
+        "past_example": { "eng": "I thought about you.", "ipa": "/aɪ θɔt əˈbaʊt ju/", "por": "Eu pensei em você." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "understand", "past": "understood", "participle": "understood", "translation": "entender",
+        "present_example": { "eng": "I don't understand the question.", "ipa": "/aɪ doʊnt ˌʌndərˈstænd ðə ˈkwɛsʧən/", "por": "Eu não entendo a pergunta." },
+        "past_example": { "eng": "She understood everything.", "ipa": "/ʃi ˌʌndərˈstʊd ˈɛvriˌθɪŋ/", "por": "Ela entendeu tudo." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "wear", "past": "wore", "participle": "worn", "translation": "vestir, usar",
+        "present_example": { "eng": "What are you going to wear?", "ipa": "/wʌt ɑr ju ˈgoʊɪŋ tu wɛr/", "por": "O que você vai vestir?" },
+        "past_example": { "eng": "He wore a blue shirt.", "ipa": "/hi wɔr ə blu ʃɜrt/", "por": "Ele usou uma camisa azul." }
+    },
+    {
+        "type": "irregular",
+        "infinitive": "write", "past": "wrote", "participle": "written", "translation": "escrever",
+        "present_example": { "eng": "I need to write an email.", "ipa": "/aɪ nid tu raɪt ən iˈmeɪl/", "por": "Eu preciso escrever um e-mail." },
+        "past_example": { "eng": "She wrote a book.", "ipa": "/ʃi roʊt ə bʊk/", "por": "Ela escreveu um livro." }
     }
 ]

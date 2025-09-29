@@ -1,21 +1,83 @@
 {
     "A1": [
-        {
-            "title": "Meeting for the first time",
-            "dialogue": [
-                { "eng": "Hello, I'm John.", "ipa": "hɛˈloʊ, aɪm ʤɑn", "por": "Olá, eu sou o John." },
-                { "eng": "Hi John, I'm Maria. Nice to meet you.", "ipa": "haɪ ʤɑn, aɪm məˈriə. naɪs tu mit ju", "por": "Oi John, eu sou a Maria. Prazer em te conhecer." },
-                { "eng": "Nice to meet you too. Where are you from?", "ipa": "naɪs tu mit ju tu. wɛr ɑr ju frʌm?", "por": "Prazer em te conhecer também. De onde você é?" }
-            ]
-        }
+        { "title": "Greetings", "dialogue": [
+            { "eng": "Hello, Maria.", "ipa": "/hɛˈloʊ, məˈriə/", "por": "Olá, Maria." },
+            { "eng": "Hi, John. How are you?", "ipa": "/haɪ, ʤɑn. haʊ ɑr ju/", "por": "Oi, John. Como você está?" },
+            { "eng": "I'm fine, thanks. And you?", "ipa": "/aɪm faɪn, θæŋks. ænd ju/", "por": "Estou bem, obrigado. E você?" },
+            { "eng": "I'm good, thank you.", "ipa": "/aɪm gʊd, θæŋk ju/", "por": "Estou bem, obrigada." }
+        ]},
+        { "title": "Introducing yourself", "dialogue": [
+            { "eng": "Hi, my name is Pedro.", "ipa": "/haɪ, maɪ neɪm ɪz ˈpɛdroʊ/", "por": "Oi, meu nome é Pedro." },
+            { "eng": "Hello, Pedro. I'm Ana.", "ipa": "/hɛˈloʊ, ˈpɛdroʊ. aɪm ˈænə/", "por": "Olá, Pedro. Eu sou a Ana." },
+            { "eng": "Nice to meet you, Ana.", "ipa": "/naɪs tu mit ju, ˈænə/", "por": "Prazer em te conhecer, Ana." },
+            { "eng": "Nice to meet you too.", "ipa": "/naɪs tu mit ju tu/", "por": "Prazer em te conhecer também." }
+        ]},
+        { "title": "Ordering coffee", "dialogue": [
+            { "eng": "Good morning. Can I have a coffee, please?", "ipa": "/gʊd ˈmɔrnɪŋ. kæn aɪ hæv ə ˈkɔfi, pliz/", "por": "Bom dia. Eu gostaria de um café, por favor." },
+            { "eng": "Sure. Black or with milk?", "ipa": "/ʃʊr. blæk ɔr wɪθ mɪlk/", "por": "Claro. Preto ou com leite?" },
+            { "eng": "With milk, please.", "ipa": "/wɪθ mɪlk, pliz/", "por": "Com leite, por favor." },
+            { "eng": "Here you are.", "ipa": "/hir ju ɑr/", "por": "Aqui está." }
+        ]},
+        { "title": "Asking for the time", "dialogue": [
+            { "eng": "Excuse me, what time is it?", "ipa": "/ɪkˈskjus mi, wʌt taɪm ɪz ɪt/", "por": "Com licença, que horas são?" },
+            { "eng": "It's three o'clock.", "ipa": "/ɪts θri əˈklɑk/", "por": "São três horas." },
+            { "eng": "Thank you very much.", "ipa": "/θæŋk ju ˈvɛri mʌʧ/", "por": "Muito obrigado." },
+            { "eng": "You're welcome.", "ipa": "/jʊər ˈwɛlkəm/", "por": "De nada." }
+        ]},
+        { "title": "At the supermarket", "dialogue": [
+            { "eng": "Where can I find the bread?", "ipa": "/wɛr kæn aɪ faɪnd ðə brɛd/", "por": "Onde posso encontrar o pão?" },
+            { "eng": "It's on aisle four.", "ipa": "/ɪts ɑn aɪl fɔr/", "por": "Está no corredor quatro." },
+            { "eng": "Thank you.", "ipa": "/θæŋk ju/", "por": "Obrigado." },
+            { "eng": "No problem.", "ipa": "/noʊ ˈprɑbləm/", "por": "Sem problemas." }
+        ]}
+    ],
+    "A2": [
+        { "title": "Talking about family", "dialogue": [
+            { "eng": "Do you have any brothers or sisters?", "ipa": "/du ju hæv ˈɛni ˈbrʌðərz ɔr ˈsɪstərz/", "por": "Você tem irmãos ou irmãs?" },
+            { "eng": "Yes, I have one brother.", "ipa": "/jɛs, aɪ hæv wʌn ˈbrʌðər/", "por": "Sim, eu tenho um irmão." },
+            { "eng": "What does he do?", "ipa": "/wʌt dʌz hi du/", "por": "O que ele faz?" },
+            { "eng": "He is a student.", "ipa": "/hi ɪz ə ˈstudənt/", "por": "Ele é estudante." }
+        ]},
+        { "title": "Making plans", "dialogue": [
+            { "eng": "Are you free on Saturday?", "ipa": "/ɑr ju fri ɑn ˈsætərˌdeɪ/", "por": "Você está livre no sábado?" },
+            { "eng": "Yes, I think so. Why?", "ipa": "/jɛs, aɪ θɪŋk soʊ. waɪ/", "por": "Sim, acho que sim. Por quê?" },
+            { "eng": "Would you like to go to the movies?", "ipa": "/wʊd ju laɪk tu goʊ tu ðə ˈmuviz/", "por": "Você gostaria de ir ao cinema?" },
+            { "eng": "That sounds like a great idea!", "ipa": "/ðæt saʊndz laɪk ə greɪt aɪˈdiə/", "por": "Parece uma ótima ideia!" }
+        ]},
+        { "title": "Talking about hobbies", "dialogue": [
+            { "eng": "What do you like to do in your free time?", "ipa": "/wʌt du ju laɪk tu du ɪn jʊər fri taɪm/", "por": "O que você gosta de fazer no seu tempo livre?" },
+            { "eng": "I enjoy playing the guitar and reading.", "ipa": "/aɪ ɛnˈʤɔɪ ˈpleɪɪŋ ðə gɪˈtɑr ænd ˈridɪŋ/", "por": "Eu gosto de tocar violão e ler." },
+            { "eng": "How long have you been playing the guitar?", "ipa": "/haʊ lɔŋ hæv ju bɪn ˈpleɪɪŋ ðə gɪˈtɑr/", "por": "Há quanto tempo você toca violão?" },
+            { "eng": "For about five years.", "ipa": "/fɔr əˈbaʊt faɪv jɪrz/", "por": "Por cerca de cinco anos." }
+        ]}
+    ],
+    "B1": [
+        { "title": "Discussing a trip", "dialogue": [
+            { "eng": "Have you ever been to Italy?", "ipa": "/hæv ju ˈɛvər bɪn tu ˈɪtəli/", "por": "Você já esteve na Itália?" },
+            { "eng": "No, I haven't, but I'd love to go. Have you?", "ipa": "/noʊ, aɪ ˈhævənt, bʌt aɪd lʌv tu goʊ. hæv ju/", "por": "Não, nunca estive, mas adoraria ir. E você?" },
+            { "eng": "Yes, I went last year. It was an amazing experience.", "ipa": "/jɛs, aɪ wɛnt læst jɪr. ɪt wʌz ən əˈmeɪzɪŋ ɪkˈspɪriəns/", "por": "Sim, eu fui ano passado. Foi uma experiência incrível." },
+            { "eng": "What did you like the most?", "ipa": "/wʌt dɪd ju laɪk ðə moʊst/", "por": "Do que você mais gostou?" },
+            { "eng": "The food was incredible, and the history is fascinating.", "ipa": "/ðə fud wʌz ɪnˈkrɛdəbəl, ænd ðə ˈhɪstəri ɪz ˈfæsəˌneɪtɪŋ/", "por": "A comida era incrível, e a história é fascinante." }
+        ]},
+        { "title": "Giving opinions", "dialogue": [
+            { "eng": "What do you think about the new environmental policy?", "ipa": "/wʌt du ju θɪŋk əˈbaʊt ðə nu ɪnˌvaɪərənˈmɛntəl ˈpɑləsi/", "por": "O que você acha da nova política ambiental?" },
+            { "eng": "In my opinion, it's a step in the right direction, but it's not enough.", "ipa": "/ɪn maɪ əˈpɪnjən, ɪts ə stɛp ɪn ðə raɪt dəˈrɛkʃən, bʌt ɪts nɑt ɪˈnʌf/", "por": "Na minha opinião, é um passo na direção certa, mas não é o suficiente." },
+            { "eng": "I agree. More drastic measures should be taken.", "ipa": "/aɪ əˈgri. mɔr ˈdræstɪk ˈmɛʒərz ʃʊd bi ˈteɪkən/", "por": "Eu concordo. Medidas mais drásticas deveriam ser tomadas." },
+            { "eng": "Exactly. We need to act before it's too late.", "ipa": "/ɪgˈzæktli. wi nid tu ækt bɪˈfɔr ɪts tu leɪt/", "por": "Exatamente. Precisamos agir antes que seja tarde demais." }
+        ]}
     ],
     "B2": [
-        {
-            "title": "Discussing a project",
-            "dialogue": [
-                { "eng": "Regarding the quarterly report, I believe we should emphasize the market trends.", "ipa": "rɪˈgɑrdɪŋ ðə ˈkwɔrtərli rɪˈpɔrt, aɪ bɪˈliv wi ʃʊd ˈɛmfəˌsaɪz ðə ˈmɑrkət trɛndz", "por": "Com relação ao relatório trimestral, acredito que deveríamos enfatizar as tendências de mercado." },
-                { "eng": "That's a valid point. However, we must also address the budget constraints.", "ipa": "ðæts ə ˈvælɪd pɔɪnt. haʊˈɛvər, wi mʌst ˈɔlsoʊ əˈdrɛs ðə ˈbʌʤɪt kənˈstreɪnts", "por": "É um ponto válido. No entanto, também devemos abordar as restrições orçamentárias." }
-            ]
-        }
+        { "title": "Complex debate: Technology", "dialogue": [
+            { "eng": "To what extent do you believe artificial intelligence will reshape the job market?", "ipa": "/tu wʌt ɪkˈstɛnt du ju bɪˈliv ˌɑrtəˈfɪʃəl ɪnˈtɛləʤəns wɪl riˈʃeɪp ðə ʤɑb ˈmɑrkət/", "por": "Até que ponto você acredita que a inteligência artificial irá remodelar o mercado de trabalho?" },
+            { "eng": "It's undeniable that automation will displace many routine jobs. However, it will simultaneously create new roles that require uniquely human skills.", "ipa": "/ɪts ˌʌndɪˈnaɪəbəl ðæt ˌɔtəˈmeɪʃən wɪl dɪsˈpleɪs ˈmɛni ruˈtin ʤɑbz. haʊˈɛvər, ɪt wɪl ˌsaɪməlˈteɪniəsli kriˈeɪt nu roʊlz ðæt rɪˈkwaɪər juˈnikli ˈhjumən skɪlz/", "por": "É inegável que a automação deslocará muitos trabalhos rotineiros. No entanto, ela simultaneamente criará novas funções que exigem habilidades unicamente humanas." },
+            { "eng": "That's a rather optimistic take. I'm concerned about the transition period and the potential for widespread unemployment.", "ipa": "/ðæts ə ˈræðər ˌɑptəˈmɪstɪk teɪk. aɪm kənˈsɜrnd əˈbaʊt ðə trænˈzɪʃən ˈpɪriəd ænd ðə pəˈtɛnʃəl fɔr ˈwaɪdˌsprɛd ˌʌnɪmˈplɔɪmənt/", "por": "Essa é uma visão bastante otimista. Estou preocupado com o período de transição e o potencial para um desemprego em massa." },
+            { "eng": "While your concern is valid, history shows that technological revolutions ultimately lead to a higher standard of living, provided that society invests in education and retraining.", "ipa": "/waɪl jʊər kənˈsɜrn ɪz ˈvælɪd, ˈhɪstəri ʃoʊz ðæt ˌtɛknəˈlɑʤɪkəl ˌrɛvəˈluʃənz ˈʌltəmətli lid tu ə ˈhaɪər ˈstændərd ʌv ˈlɪvɪŋ, prəˈvaɪdɪd ðæt səˈsaɪəti ɪnˈvɛsts ɪn ˌɛʤəˈkeɪʃən ænd riˈtreɪnɪŋ/", "por": "Embora sua preocupação seja válida, a história mostra que as revoluções tecnológicas acabam por levar a um padrão de vida mais elevado, desde que a sociedade invista em educação e requalificação." }
+        ]},
+        { "title": "Negotiating a business deal", "dialogue": [
+            { "eng": "Regarding your proposal, we find the terms generally acceptable, but we have some reservations about the exclusivity clause.", "ipa": "/rɪˈgɑrdɪŋ jʊər prəˈpoʊzəl, wi faɪnd ðə tɜrmz ˈʤɛnərəli əkˈsɛptəbəl, bʌt wi hæv sʌm ˌrɛzərˈveɪʃənz əˈbaʊt ði ɪkˌsklusɪˈvɪti klɔz/", "por": "Com relação à sua proposta, consideramos os termos geralmente aceitáveis, mas temos algumas ressalvas sobre a cláusula de exclusividade." },
+            { "eng": "I understand. The exclusivity clause is crucial for us to commit our marketing resources fully. What specific changes would you suggest?", "ipa": "/aɪ ˌʌndərˈstænd. ði ɪkˌsklusɪˈvɪti klɔz ɪz ˈkruʃəl fɔr ʌs tu kəˈmɪt ˈaʊər ˈmɑrkətɪŋ ˈrisɔrsɪz ˈfʊli. wʌt spəˈsɪfɪk ˈʧeɪnʤəz wʊd ju səgˈʤɛst/", "por": "Eu entendo. A cláusula de exclusividade é crucial para nós comprometermos totalmente nossos recursos de marketing. Que mudanças específicas você sugeriria?" },
+            { "eng": "We would be more comfortable with a shorter exclusivity period, perhaps six months instead of twelve, with an option to renew based on performance metrics.", "ipa": "/wi wʊd bi mɔr ˈkʌmfərtəbəl wɪθ ə ˈʃɔrtər ɪkˌsklusɪˈvɪti ˈpɪriəd, pərˈhæps sɪks mʌnθs ɪnˈstɛd ʌv twɛlv, wɪθ ən ˈɑpʃən tu rɪˈnu beɪst ɑn pərˈfɔrməns ˈmɛtrɪks/", "por": "Ficaríamos mais confortáveis com um período de exclusividade mais curto, talvez seis meses em vez de doze, com opção de renovação baseada em métricas de desempenho." },
+            { "eng": "That's a reasonable compromise. Let me discuss it with my team, and I'll get back to you with a revised draft by the end of the day.", "ipa": "/ðæts ə ˈrizənəbəl ˈkɑmprəˌmaɪz. lɛt mi dɪˈskʌs ɪt wɪθ maɪ tim, ænd aɪl gɛt bæk tu ju wɪθ ə rɪˈvaɪzd dræft baɪ ði ɛnd ʌv ðə deɪ/", "por": "É um compromisso razoável. Deixe-me discutir com minha equipe, e eu retornarei com uma minuta revisada até o final do dia." }
+        ]}
     ]
 }
