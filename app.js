@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const activateTab = (tab) => {
+        if (!tab) return;
         const tabName = tab.dataset.tab;
         tabs.forEach(t => t.classList.remove('active'));
         tabContents.forEach(tc => tc.classList.remove('active'));
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderPhrasalVerbs(container, gramatica.phrasalverbs);
                 } else if (tabName === 'preposicoes') {
                     renderPrepositions(container, gramatica.preposicoes);
-                } else {
+                } else if (gramatica[tabName]) {
                     renderGenericList(container, gramatica[tabName], tabName.charAt(0).toUpperCase() + tabName.slice(1));
                 }
             } else {
@@ -85,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderPrepositions = (container, data) => {
         let html = `<h2>🌍 Preposições</h2>`;
         for (const category in data) {
-            html += `<div class="pillar-group"><h3>${category.charAt(0).toUpperCase() + category.slice(1)}</h3>`; // Ex: Tempo, Lugar
+            html += `<div class="pillar-group"><h3>${category.charAt(0).toUpperCase() + category.slice(1)}</h3>`;
             html += data[category].map(item => `
                  <div class="content-item searchable-item" data-search-term="${item.eng} ${item.por}">
                     ${createStackedTranslationHTML(item.eng, item.ipa, item.por)}
@@ -320,4 +321,78 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="content-item searchable-item" data-search-term="${verb.infinitive} ${verb.past} ${verb.participle} ${verb.translation}">
                 <h3>${verb.infinitive} / ${verb.past} / ${verb.participle}</h3>
                 <p class="translation-line"><em>${verb.translation}</em></p>
-                ${createStackedTranslationHTML(verb.present_example.eng, verb.present_example.ipa, verb.present_example
+                ${createStackedTranslationHTML(verb.present_example.eng, verb.present_example.ipa, verb.present_example.por)}
+                ${createStackedTranslationHTML(verb.past_example.eng, verb.past_example.ipa, verb.past_example.por)}
+            </div>
+        `).join('');
+        addTTSListeners(container);
+    };
+    const renderConversations = (container, data) => {
+        let html = '';
+        for (const level in data) {
+            html += `<h2>Nível ${level.toUpperCase()}</h2>`;
+            html += data[level].map(convo => `
+                <div class="conversation-block searchable-item" data-search-term="${convo.title}">
+                    <h4>${convo.title}</h4>
+                    ${convo.dialogue.map(line => createStackedTranslationHTML(line.eng, line.ipa, line.por)).join('')}
+                </div>
+            `).join('');
+        }
+        container.innerHTML = html;
+        addTTSListeners(container);
+    };
+    const renderGenericList = (container, data, title) => {
+        container.innerHTML = `<h2>${title} (${data.length})</h2><div class="content-grid"></div>`;
+        const grid = container.querySelector('.content-grid');
+        grid.innerHTML = data.map(item => `
+            <div class="content-item searchable-item" data-search-term="${item.eng} ${item.por}">
+                ${createStackedTranslationHTML(item.eng, item.ipa, item.por)}
+            </div>
+        `).join('');
+        addTTSListeners(container);
+    };
+    const fetchData = async (file) => {
+        const response = await fetch(file);
+        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
+        return await response.json();
+    };
+    const toggleTheme = () => {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', currentTheme);
+        applyTheme();
+    };
+    const applyTheme = () => { body.dataset.theme = currentTheme; };
+    const handleSearch = (e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        const activeContent = document.querySelector('.tab-content.active');
+        if (!activeContent) return;
+        const items = activeContent.querySelectorAll('.searchable-item');
+        items.forEach(item => {
+            const itemText = (item.dataset.searchTerm || item.textContent).toLowerCase();
+            item.style.display = itemText.includes(searchTerm) ? '' : 'none';
+        });
+    };
+    const addTTSListeners = (container) => {
+        container.addEventListener('click', (e) => {
+            if (e.target.closest('.tts-button')) {
+                const textToSpeak = e.target.closest('.tts-button').nextElementSibling.textContent;
+                speak(textToSpeak, e.target.closest('.tts-button'));
+            }
+        });
+    };
+    const speak = (text, buttonEl) => {
+        speechSynthesis.cancel(); 
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.8;
+        utterance.volume = 1.0;
+        utterance.onstart = () => {
+            document.querySelectorAll('.tts-button.speaking').forEach(b => b.classList.remove('speaking'));
+            buttonEl.classList.add('speaking');
+        };
+        utterance.onend = () => { buttonEl.classList.remove('speaking'); };
+        speechSynthesis.speak(utterance);
+    };
+    
+    init();
+});
