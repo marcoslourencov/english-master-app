@@ -11,8 +11,8 @@
     --font-family: 'Inter', sans-serif;
     --border-radius: 8px;
     --tts-speaking-color: #f59e0b;
-    --header-height: 69px; /* Adicionado */
-    --nav-height: 49px; /* Adicionado */
+    --header-height: 69px;
+    --nav-height: 49px;
 }
 
 [data-theme='dark'] {
@@ -28,20 +28,25 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { scroll-behavior: smooth; }
+
 body {
     font-family: var(--font-family);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* --- CABEÇALHO E CONTROLES --- */
 .app-header {
-    height: var(--header-height);
+    height: auto;
+    min-height: var(--header-height);
     background-color: var(--surface-color);
     border-bottom: 1px solid var(--border-color);
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1rem;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -50,15 +55,20 @@ body {
 
 .header-container {
     max-width: 1200px;
-    height: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
 }
 
-.app-header h1 { font-size: 1.5rem; color: var(--primary-color); }
+.app-header h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    white-space: nowrap; /* Impede que o título quebre no meio */
+}
+
 .controls { display: flex; gap: 0.5rem; align-items: center; }
 
 #search-input, .control-btn {
@@ -86,10 +96,9 @@ body {
     background-color: var(--surface-color);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
-    top: var(--header-height); /* Colado abaixo do header */
+    top: var(--header-height);
     z-index: 999;
 }
-
 .tab-scroll-container {
     max-width: 1200px;
     height: 100%;
@@ -102,7 +111,6 @@ body {
     scrollbar-width: none;
 }
 .tab-scroll-container::-webkit-scrollbar { display: none; }
-
 .tab-link {
     padding: 0.75rem 1rem;
     border: none;
@@ -121,12 +129,12 @@ body {
 .tab-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
 
 /* --- CONTEÚDO --- */
-.content-container { max-width: 1200px; margin: 1.5rem auto; padding: 0 1.5rem; }
+.content-container { max-width: 1200px; margin: 1.5rem auto; padding: 0 1rem; }
 .tab-content { display: none; }
 .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.content-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.content-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .content-item, .conversation-block, .pillar-section {
     background-color: var(--surface-color);
     border: 1px solid var(--border-color);
@@ -140,18 +148,13 @@ body {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
 }
-
 h2 { color: var(--secondary-color); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border-color); font-size: 1.8rem; }
 h3 { color: var(--accent-color); margin-bottom: 1rem; font-size: 1.4rem; }
 h4 { color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.75rem; border-top: 1px solid var(--border-color); padding-top: 1rem; }
 h5 { color: var(--text-color); font-weight: bold; margin-bottom: 0.5rem; }
 
 /* --- UI dos Pilares (Acordeão) --- */
-.pillar-toggles {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
+.pillar-toggles { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
 .pillar-toggle {
     flex-grow: 1;
     padding: 0.75rem 1rem;
@@ -165,19 +168,41 @@ h5 { color: var(--text-color); font-weight: bold; margin-bottom: 0.5rem; }
     transition: all 0.2s ease;
 }
 .pillar-toggle:hover { border-color: var(--primary-color); }
-.pillar-toggle.active {
-    background-color: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
+.pillar-toggle.active { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
 .pillar-content { display: none; }
 .pillar-content.active { display: block; }
 
 /* --- Linhas de Exemplo --- */
 .english-line { display: flex; align-items: center; font-weight: 500; margin-bottom: 0.25rem; }
-.tts-button { background: none; border: none; cursor: pointer; font-size: 1.2rem; margin-right: 0.5rem; color: var(--text-color); transition: all 0.2s ease; }
+.tts-button { background: none; border: none; cursor: pointer; font-size: 1.2rem; margin-right: 0.5rem; color: var(--text-color); transition: all 0.2s ease; flex-shrink: 0; }
 .tts-button:hover { transform: scale(1.1); color: var(--primary-color); }
 .tts-button.speaking { color: var(--tts-speaking-color); }
-.ipa { font-size: 0.9rem; color: var(--secondary-color); margin-left: 0.5rem; font-style: italic; }
+.ipa { font-size: 0.9rem; color: var(--secondary-color); margin-left: 0.5rem; font-style: italic; white-space: normal; }
 .translation-line { padding-left: 2.5rem; font-size: 0.95rem; color: var(--text-color); opacity: 0.8; transition: all 0.3s ease; margin-bottom: 0.75rem;}
 body.hide-translation .translation-line { display: none; }
+
+/* --- AJUSTES DE RESPONSIVIDADE MOBILE --- */
+@media (max-width: 480px) {
+    .app-header {
+        --header-height: auto; /* Altura auto para o header */
+        top: 0;
+    }
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    .app-header h1 {
+        font-size: 1.2rem;
+    }
+    .controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    #search-input {
+        flex-grow: 1;
+    }
+    .tab-nav {
+        top: 114px; /* Ajuste manual com base no novo header, pode variar */
+    }
+}
