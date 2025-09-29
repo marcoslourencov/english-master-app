@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- ELEMENTOS DO DOM ---
     const tabs = document.querySelectorAll('.tab-link');
     const tabContents = document.querySelectorAll('.tab-content');
     const searchInput = document.getElementById('search-input');
@@ -6,10 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const translationToggle = document.getElementById('translation-toggle');
     const body = document.body;
 
+    // --- ESTADO DA APLICAÇÃO ---
     let currentTheme = localStorage.getItem('theme') || 'light';
     let translationsVisible = localStorage.getItem('translationsVisible') !== 'false';
     const contentRendered = new Set();
 
+    // --- INICIALIZAÇÃO ---
     const init = () => {
         setupEventListeners();
         applyTheme();
@@ -82,105 +85,166 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="translation-line">${por}</div>
                 </div>`;
     };
-
-    // NOVA FUNÇÃO COMPLETA PARA OS PILARES
+    
+    // --- FUNÇÃO DE PILARES TOTALMENTE RECONSTRUÍDA ---
     const renderPilares = (container) => {
         const pronouns = [
-            { subj: 'I', a: 'am', b: 'was', c: 'do', d: 'am not', e: "I'm", f: "I'm not", g: "wasn't", h: "don't" },
-            { subj: 'You', a: 'are', b: 'were', c: 'do', d: 'are not', e: "You're", f: "You're not", g: "weren't", h: "don't" },
-            { subj: 'He', a: 'is', b: 'was', c: 'does', d: 'is not', e: "He's", f: "He's not", g: "wasn't", h: "doesn't" },
-            { subj: 'She', a: 'is', b: 'was', c: 'does', d: 'is not', e: "She's", f: "She's not", g: "wasn't", h: "doesn't" },
-            { subj: 'It', a: 'is', b: 'was', c: 'does', d: 'is not', e: "It's", f: "It's not", g: "wasn't", h: "doesn't" },
-            { subj: 'We', a: 'are', b: 'were', c: 'do', d: 'are not', e: "We're", f: "We're not", g: "weren't", h: "don't" },
-            { subj: 'They', a: 'are', b: 'were', c: 'do', d: 'are not', e: "They're", f: "They're not", g: "weren't", h: "don't" }
+            { subj: 'I', pt: 'Eu', am: 'am', was: 'was', do: 'do', d_not: "don't", a_not: "am not", w_not: "wasn't" },
+            { subj: 'You', pt: 'Você', am: 'are', was: 'were', do: 'do', d_not: "don't", a_not: "aren't", w_not: "weren't" },
+            { subj: 'He', pt: 'Ele', am: 'is', was: 'was', do: 'does', d_not: "doesn't", a_not: "isn't", w_not: "wasn't" },
+            { subj: 'She', pt: 'Ela', am: 'is', was: 'was', do: 'does', d_not: "doesn't", a_not: "isn't", w_not: "wasn't" },
+            { subj: 'It', pt: 'Isso', am: 'is', was: 'was', do: 'does', d_not: "doesn't", a_not: "isn't", w_not: "wasn't" },
+            { subj: 'We', pt: 'Nós', am: 'are', was: 'were', do: 'do', d_not: "don't", a_not: "aren't", w_not: "weren't" },
+            { subj: 'They', pt: 'Eles', am: 'are', was: 'were', do: 'do', d_not: "don't", a_not: "aren't", w_not: "weren't" }
         ];
 
         let html = '<h2>⚖️ Pilares Fundamentais</h2>';
-
-        // --- SEÇÃO TO BE ---
-        html += '<div class="pillar-section"><h3>To Be</h3>';
-        ['Present', 'Past', 'Future'].forEach(tense => {
-            html += `<div class="pillar-group"><h3>${tense}</h3>`;
-            pronouns.forEach(p => {
-                html += `<h4>Pronome: ${p.subj}</h4>`;
-                let affirmative, negative, interrogative, interrogativeNegative, contracted, negContracted;
-                if (tense === 'Present') {
-                    affirmative = `${p.subj} ${p.a} a teacher.`;
-                    negative = `${p.subj} ${p.d} a teacher.`;
-                    interrogative = `${p.a.charAt(0).toUpperCase() + p.a.slice(1)} ${p.subj.toLowerCase()} a teacher?`;
-                    interrogativeNegative = `${p.a.charAt(0).toUpperCase() + p.a.slice(1)} ${p.subj.toLowerCase()} not a teacher?`;
-                    contracted = `${p.e} a teacher.`;
-                    negContracted = `${p.f} a teacher. / ${p.subj} ${p.a === 'is' ? "isn't" : "aren't"} a teacher.`;
-                } else if (tense === 'Past') {
-                    affirmative = `${p.subj} ${p.b} a student.`;
-                    negative = `${p.subj} ${p.b} not a student.`;
-                    interrogative = `${p.b.charAt(0).toUpperCase() + p.b.slice(1)} ${p.subj.toLowerCase()} a student?`;
-                    interrogativeNegative = `${p.b.charAt(0).toUpperCase() + p.b.slice(1)} ${p.subj.toLowerCase()} not a student?`;
-                    contracted = `(Não aplicável)`;
-                    negContracted = `${p.subj} ${p.g} a student.`;
-                } else { // Future
-                    affirmative = `${p.subj} will be a pilot.`;
-                    negative = `${p.subj} will not be a pilot.`;
-                    interrogative = `Will ${p.subj.toLowerCase()} be a pilot?`;
-                    interrogativeNegative = `Will ${p.subj.toLowerCase()} not be a pilot?`;
-                    contracted = `${p.subj}'ll be a pilot.`;
-                    negContracted = `${p.subj} won't be a pilot.`;
-                }
-                html += `<h5>Afirmativa</h5>${createStackedTranslationHTML(affirmative, '...', 'Eu sou um professor.')}`;
-                html += `<h5>Negativa</h5>${createStackedTranslationHTML(negative, '...', 'Eu não sou um professor.')}`;
-                html += `<h5>Interrogativa</h5>${createStackedTranslationHTML(interrogative, '...', 'Eu sou um professor?')}`;
-                html += `<h5>Interrogativa Negativa</h5>${createStackedTranslationHTML(interrogativeNegative, '...', 'Eu não sou um professor?')}`;
-                html += `<h5>Formas Abreviadas</h5>${createStackedTranslationHTML(contracted, '...', 'Eu sou um professor. (Abreviado)')}`;
-                html += createStackedTranslationHTML(negContracted, '...', 'Eu não sou um professor. (Abreviado)');
-            });
-            html += `</div>`;
-        });
-        html += '</div>';
-        
-        // --- SEÇÃO SIMPLE TENSES ---
-        html += '<div class="pillar-section"><h3>Simple (com o verbo "work")</h3>';
-        ['Present', 'Past', 'Future'].forEach(tense => {
-            html += `<div class="pillar-group"><h3>${tense}</h3>`;
-             pronouns.forEach(p => {
-                html += `<h4>Pronome: ${p.subj}</h4>`;
-                let affirmative, negative, interrogative, interrogativeNegative, negContracted;
-                const verb = (p.c === 'does') ? 'works' : 'work';
-                if (tense === 'Present') {
-                    affirmative = `${p.subj} ${verb}.`;
-                    negative = `${p.subj} ${p.h} work.`;
-                    interrogative = `${p.c.charAt(0).toUpperCase() + p.c.slice(1)} ${p.subj.toLowerCase()} work?`;
-                    interrogativeNegative = `${p.c.charAt(0).toUpperCase() + p.c.slice(1)} ${p.subj.toLowerCase()} not work?`;
-                    negContracted = `${p.h.charAt(0).toUpperCase() + p.h.slice(1)} ${p.subj.toLowerCase()} work?`;
-                } else if (tense === 'Past') {
-                    affirmative = `${p.subj} worked.`;
-                    negative = `${p.subj} did not work.`;
-                    interrogative = `Did ${p.subj.toLowerCase()} work?`;
-                    interrogativeNegative = `Did ${p.subj.toLowerCase()} not work?`;
-                    negContracted = `Didn't ${p.subj.toLowerCase()} work?`;
-                } else { // Future
-                    affirmative = `${p.subj} will work.`;
-                    negative = `${p.subj} will not work.`;
-                    interrogative = `Will ${p.subj.toLowerCase()} work?`;
-                    interrogativeNegative = `Will ${p.subj.toLowerCase()} not work?`;
-                    negContracted = `Won't ${p.subj.toLowerCase()} work?`;
-                }
-                html += `<h5>Afirmativa</h5>${createStackedTranslationHTML(affirmative, '...', 'Ele trabalha.')}`;
-                html += `<h5>Negativa</h5>${createStackedTranslationHTML(negative, '...', 'Ele não trabalha.')}`;
-                html += `<h5>Interrogativa</h5>${createStackedTranslationHTML(interrogative, '...', 'Ele trabalha?')}`;
-                html += `<h5>Interrogativa Negativa</h5>${createStackedTranslationHTML(interrogativeNegative, '...', 'Ele não trabalha?')}`;
-                html += `<h5>Forma Abreviada (Negativa)</h5>${createStackedTranslationHTML(negContracted, '...', 'Ele não trabalha? (Abreviado)')}`;
-            });
-            html += `</div>`;
-        });
-        html += '</div>';
-
+        html += `
+            <div class="pillar-toggles">
+                <button class="pillar-toggle" data-pillar="tobe">To Be</button>
+                <button class="pillar-toggle" data-pillar="simple">Simple Tenses</button>
+                <button class="pillar-toggle" data-pillar="can">Can / Could</button>
+            </div>
+            <div id="content-tobe" class="pillar-content"></div>
+            <div id="content-simple" class="pillar-content"></div>
+            <div id="content-can" class="pillar-content"></div>
+        `;
         container.innerHTML = html;
+
+        // --- GERAÇÃO DE CONTEÚDO PARA CADA PILAR ---
+        
+        // TO BE
+        let tobeContent = '<h3>To Be</h3>';
+        ['Present', 'Past', 'Future'].forEach(tense => {
+            tobeContent += `<div class="pillar-group"><h3>${tense}</h3>`;
+            pronouns.forEach(p => {
+                tobeContent += `<h4>Pronome: ${p.subj}</h4>`;
+                let forms = {};
+                if (tense === 'Present') {
+                    forms.aff = `${p.subj} ${p.am} happy.`; forms.aff_pt = `${p.pt} ${p.pt === 'Eu' ? 'sou/estou' : 'é/está'} feliz.`;
+                    forms.neg = `${p.subj} ${p.am} not happy.`; forms.neg_pt = `${p.pt} não ${p.pt === 'Eu' ? 'sou/estou' : 'é/está'} feliz.`;
+                    forms.int = `${p.am.charAt(0).toUpperCase() + p.am.slice(1)} ${p.subj.toLowerCase()} happy?`; forms.int_pt = `${p.pt} ${p.pt === 'Eu' ? 'é/está' : 'é/está'} feliz?`;
+                    forms.int_neg = `${p.am.charAt(0).toUpperCase() + p.am.slice(1)} ${p.subj.toLowerCase()} not happy?`; forms.int_neg_pt = `${p.pt} não ${p.pt === 'Eu' ? 'é/está' : 'é/está'} feliz?`;
+                    forms.contr = `${p.a_not.charAt(0).toUpperCase() + p.a_not.slice(1)} ${p.subj.toLowerCase()} happy?`; forms.contr_pt = `Forma abreviada interrogativa-negativa.`;
+                } else if (tense === 'Past') {
+                    forms.aff = `${p.subj} ${p.was} at home.`; forms.aff_pt = `${p.pt} estava em casa.`;
+                    forms.neg = `${p.subj} ${p.was} not at home.`; forms.neg_pt = `${p.pt} não estava em casa.`;
+                    forms.int = `${p.was.charAt(0).toUpperCase() + p.was.slice(1)} ${p.subj.toLowerCase()} at home?`; forms.int_pt = `${p.pt} estava em casa?`;
+                    forms.int_neg = `${p.was.charAt(0).toUpperCase() + p.was.slice(1)} ${p.subj.toLowerCase()} not at home?`; forms.int_neg_pt = `${p.pt} não estava em casa?`;
+                    forms.contr = `${p.w_not.charAt(0).toUpperCase() + p.w_not.slice(1)} ${p.subj.toLowerCase()} at home?`; forms.contr_pt = `Forma abreviada interrogativa-negativa.`;
+                } else { // Future
+                    forms.aff = `${p.subj} will be a doctor.`; forms.aff_pt = `${p.pt} será um(a) médico(a).`;
+                    forms.neg = `${p.subj} will not be a doctor.`; forms.neg_pt = `${p.pt} não será um(a) médico(a).`;
+                    forms.int = `Will ${p.subj.toLowerCase()} be a doctor?`; forms.int_pt = `${p.pt} será um(a) médico(a)?`;
+                    forms.int_neg = `Will ${p.subj.toLowerCase()} not be a doctor?`; forms.int_neg_pt = `${p.pt} não será um(a) médico(a)?`;
+                    forms.contr = `Won't ${p.subj.toLowerCase()} be a doctor?`; forms.contr_pt = `Forma abreviada interrogativa-negativa.`;
+                }
+                 tobeContent += `<h5>Afirmativa</h5>${createStackedTranslationHTML(forms.aff, '...', forms.aff_pt)}`;
+                 tobeContent += `<h5>Negativa</h5>${createStackedTranslationHTML(forms.neg, '...', forms.neg_pt)}`;
+                 tobeContent += `<h5>Interrogativa</h5>${createStackedTranslationHTML(forms.int, '...', forms.int_pt)}`;
+                 tobeContent += `<h5>Interrogativa Negativa</h5>${createStackedTranslationHTML(forms.int_neg, '...', forms.int_neg_pt)}`;
+                 tobeContent += `<h5>Abreviada (Int-Neg)</h5>${createStackedTranslationHTML(forms.contr, '...', forms.contr_pt)}`;
+            });
+            tobeContent += `</div>`;
+        });
+        document.getElementById('content-tobe').innerHTML = tobeContent;
+
+        // SIMPLE TENSES
+        let simpleContent = '<h3>Simple Tenses (com "work")</h3>';
+        ['Present', 'Past', 'Future'].forEach(tense => {
+            simpleContent += `<div class="pillar-group"><h3>${tense}</h3>`;
+            pronouns.forEach(p => {
+                simpleContent += `<h4>Pronome: ${p.subj}</h4>`;
+                 let forms = {};
+                 const verb = (p.do === 'does') ? 'works' : 'work';
+                 const verb_pt = (p.do === 'does') ? 'trabalha' : 'trabalha';
+                 if (tense === 'Present') {
+                    forms.aff = `${p.subj} ${verb}.`; forms.aff_pt = `${p.pt} ${verb_pt}.`;
+                    forms.neg = `${p.subj} ${p.d_not} work.`; forms.neg_pt = `${p.pt} não trabalha.`;
+                    forms.int = `${p.do.charAt(0).toUpperCase() + p.do.slice(1)} ${p.subj.toLowerCase()} work?`; forms.int_pt = `${p.pt} trabalha?`;
+                    forms.int_neg = `${p.do.charAt(0).toUpperCase() + p.do.slice(1)} ${p.subj.toLowerCase()} not work?`; forms.int_neg_pt = `${p.pt} não trabalha?`;
+                    forms.contr = `${p.d_not.charAt(0).toUpperCase() + p.d_not.slice(1)} ${p.subj.toLowerCase()} work?`; forms.contr_pt = `Forma abreviada interrogativa-negativa.`;
+                 } else if (tense === 'Past') {
+                    forms.aff = `${p.subj} worked.`; forms.aff_pt = `${p.pt} trabalhou.`;
+                    forms.neg = `${p.subj} did not work.`; forms.neg_pt = `${p.pt} não trabalhou.`;
+                    forms.int = `Did ${p.subj.toLowerCase()} work?`; forms.int_pt = `${p.pt} trabalhou?`;
+                    forms.int_neg = `Did ${p.subj.toLowerCase()} not work?`; forms.int_neg_pt = `${p.pt} não trabalhou?`;
+                    forms.contr = `Didn't ${p.subj.toLowerCase()} work?`; forms.contr_pt = `Forma abreviada interrogativa-negativa.`;
+                 } else { // Future
+                    forms.aff = `${p.subj} will work.`; forms.aff_pt = `${p.pt} trabalhará.`;
+                    forms.neg = `${p.subj} will not work.`; forms.neg_pt = `${p.pt} não trabalhará.`;
+                    forms.int = `Will ${p.subj.toLowerCase()} work?`; forms.int_pt = `${p.pt} trabalhará?`;
+                    forms.int_neg = `Will ${p.subj.toLowerCase()} not work?`; forms.int_neg_pt = `${p.pt} não trabalhará?`;
+                    forms.contr = `Won't ${p.subj.toLowerCase()} work?`; forms.contr_pt = `Forma abreviada interrogativa-negativa.`;
+                 }
+                 simpleContent += `<h5>Afirmativa</h5>${createStackedTranslationHTML(forms.aff, '...', forms.aff_pt)}`;
+                 simpleContent += `<h5>Negativa</h5>${createStackedTranslationHTML(forms.neg, '...', forms.neg_pt)}`;
+                 simpleContent += `<h5>Interrogativa</h5>${createStackedTranslationHTML(forms.int, '...', forms.int_pt)}`;
+                 simpleContent += `<h5>Interrogativa Negativa</h5>${createStackedTranslationHTML(forms.int_neg, '...', forms.int_neg_pt)}`;
+                 simpleContent += `<h5>Abreviada (Int-Neg)</h5>${createStackedTranslationHTML(forms.contr, '...', forms.contr_pt)}`;
+            });
+            simpleContent += `</div>`;
+        });
+        document.getElementById('content-simple').innerHTML = simpleContent;
+
+        // CAN / COULD
+        let canContent = '<h3>Can / Could / Will be able to</h3>';
+        ['Present (Can)', 'Past (Could)', 'Future (Will be able to)'].forEach(tense => {
+             canContent += `<div class="pillar-group"><h3>${tense}</h3>`;
+             pronouns.forEach(p => {
+                canContent += `<h4>Pronome: ${p.subj}</h4>`;
+                let forms = {};
+                if (tense.includes('Can')) {
+                    forms.aff = `${p.subj} can swim.`; forms.aff_pt = `${p.pt} consegue nadar.`;
+                    forms.neg = `${p.subj} cannot swim.`; forms.neg_pt = `${p.pt} não consegue nadar.`;
+                    forms.int = `Can ${p.subj.toLowerCase()} swim?`; forms.int_pt = `${p.pt} consegue nadar?`;
+                    forms.int_neg = `Cannot ${p.subj.toLowerCase()} swim?`; forms.int_neg_pt = `${p.pt} não consegue nadar?`;
+                    forms.contr = `Can't ${p.subj.toLowerCase()} swim?`; forms.contr_pt = `Forma abreviada interrogativa-negativa.`;
+                } else if (tense.includes('Could')) {
+                    forms.aff = `${p.subj} could swim.`; forms.aff_pt = `${p.pt} conseguia nadar.`;
+                    forms.neg = `${p.subj} could not swim.`; forms.neg_pt = `${p.pt} não conseguia nadar.`;
+                    forms.int = `Could ${p.subj.toLowerCase()} swim?`; forms.int_pt = `${p.pt} conseguia nadar?`;
+                    forms.int_neg = `Could ${p.subj.toLowerCase()} not swim?`; forms.int_neg_pt = `${p.pt} não conseguia nadar?`;
+                    forms.contr = `Couldn't ${p.subj.toLowerCase()} swim?`; forms.contr_pt = `Forma abreviada interrogativa-negativa.`;
+                } else { // Future
+                    forms.aff = `${p.subj} will be able to swim.`; forms.aff_pt = `${p.pt} conseguirá nadar.`;
+                    forms.neg = `${p.subj} will not be able to swim.`; forms.neg_pt = `${p.pt} não conseguirá nadar.`;
+                    forms.int = `Will ${p.subj.toLowerCase()} be able to swim?`; forms.int_pt = `${p.pt} conseguirá nadar?`;
+                    forms.int_neg = `Will ${p.subj.toLowerCase()} not be able to swim?`; forms.int_neg_pt = `${p.pt} não conseguirá nadar?`;
+                    forms.contr = `Won't ${p.subj.toLowerCase()} be able to swim?`; forms.contr_pt = `Forma abreviada interrogativa-negativa.`;
+                }
+                 canContent += `<h5>Afirmativa</h5>${createStackedTranslationHTML(forms.aff, '...', forms.aff_pt)}`;
+                 canContent += `<h5>Negativa</h5>${createStackedTranslationHTML(forms.neg, '...', forms.neg_pt)}`;
+                 canContent += `<h5>Interrogativa</h5>${createStackedTranslationHTML(forms.int, '...', forms.int_pt)}`;
+                 canContent += `<h5>Interrogativa Negativa</h5>${createStackedTranslationHTML(forms.int_neg, '...', forms.int_neg_pt)}`;
+                 canContent += `<h5>Abreviada (Int-Neg)</h5>${createStackedTranslationHTML(forms.contr, '...', forms.contr_pt)}`;
+             });
+             canContent += `</div>`;
+        });
+        document.getElementById('content-can').innerHTML = canContent;
+
+
+        // Adiciona a lógica de clique para os botões do acordeão
+        const pillarToggles = container.querySelectorAll('.pillar-toggle');
+        const pillarContents = container.querySelectorAll('.pillar-content');
+        pillarToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const pillarName = toggle.dataset.pillar;
+                
+                // Fecha todos e desativa todos os botões
+                pillarToggles.forEach(t => t.classList.remove('active'));
+                pillarContents.forEach(c => c.classList.remove('active'));
+
+                // Ativa o clicado
+                toggle.classList.add('active');
+                document.getElementById(`content-${pillarName}`).classList.add('active');
+            });
+        });
+
         addTTSListeners(container);
     };
 
-
-    // --- FUNÇÕES DE RENDERIZAÇÃO E CORE (permanecem as mesmas) ---
-    // ... (cole aqui o restante do seu arquivo app.js, pois ele não muda)
+    // --- FUNÇÕES DE RENDERIZAÇÃO E CORE (O RESTO PERMANECE O MESMO) ---
      const renderVerbs = (container, verbs, type) => {
         const filteredVerbs = verbs.filter(v => v.type === type);
         container.innerHTML = `<h2>Verbos ${type === 'regular' ? 'Regulares' : 'Irregulares'} (${filteredVerbs.length})</h2><div class="content-grid"></div>`;
@@ -265,7 +329,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const items = activeContent.querySelectorAll('.searchable-item');
         items.forEach(item => {
             const itemText = (item.dataset.searchTerm || item.textContent).toLowerCase();
-            item.style.display = itemText.includes(searchTerm) ? '' : 'none';
+            const isHidden = !itemText.includes(searchTerm);
+            item.style.display = isHidden ? 'none' : '';
         });
     };
     const addTTSListeners = (container) => {

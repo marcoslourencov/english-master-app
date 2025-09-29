@@ -11,6 +11,8 @@
     --font-family: 'Inter', sans-serif;
     --border-radius: 8px;
     --tts-speaking-color: #f59e0b;
+    --header-height: 69px; /* Adicionado */
+    --nav-height: 49px; /* Adicionado */
 }
 
 [data-theme='dark'] {
@@ -36,6 +38,7 @@ body {
 
 /* --- CABEÇALHO E CONTROLES --- */
 .app-header {
+    height: var(--header-height);
     background-color: var(--surface-color);
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 1.5rem;
@@ -47,6 +50,7 @@ body {
 
 .header-container {
     max-width: 1200px;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -55,7 +59,6 @@ body {
 }
 
 .app-header h1 { font-size: 1.5rem; color: var(--primary-color); }
-
 .controls { display: flex; gap: 0.5rem; align-items: center; }
 
 #search-input, .control-btn {
@@ -77,24 +80,26 @@ body {
 [data-theme='dark'] .sun-icon { display: none; }
 [data-theme='dark'] .moon-icon { display: block; }
 
-
 /* --- NAVEGAÇÃO POR ABAS (FIXA E ROLÁVEL) --- */
 .tab-nav {
+    height: var(--nav-height);
     background-color: var(--surface-color);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
-    top: 69px; /* Altura do header */
+    top: var(--header-height); /* Colado abaixo do header */
     z-index: 999;
 }
 
 .tab-scroll-container {
     max-width: 1200px;
+    height: 100%;
     margin: 0 auto;
     display: flex;
+    align-items: center;
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
 }
 .tab-scroll-container::-webkit-scrollbar { display: none; }
 
@@ -108,6 +113,9 @@ body {
     font-weight: 500;
     border-bottom: 3px solid transparent;
     transition: color 0.2s ease, border-color 0.2s ease;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
 }
 .tab-link:hover { color: var(--primary-color); }
 .tab-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
@@ -116,10 +124,10 @@ body {
 .content-container { max-width: 1200px; margin: 1.5rem auto; padding: 0 1.5rem; }
 .tab-content { display: none; }
 .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .content-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-.content-item, .conversation-block, .pillar-section, .pillar-group {
+.content-item, .conversation-block, .pillar-section {
     background-color: var(--surface-color);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
@@ -127,16 +135,49 @@ body {
     box-shadow: 0 4px 6px var(--shadow-color);
     margin-bottom: 2rem;
 }
+.pillar-group {
+    border-top: 1px dashed var(--border-color);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+}
 
 h2 { color: var(--secondary-color); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border-color); font-size: 1.8rem; }
 h3 { color: var(--accent-color); margin-bottom: 1rem; font-size: 1.4rem; }
 h4 { color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.75rem; border-top: 1px solid var(--border-color); padding-top: 1rem; }
 h5 { color: var(--text-color); font-weight: bold; margin-bottom: 0.5rem; }
 
+/* --- UI dos Pilares (Acordeão) --- */
+.pillar-toggles {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.pillar-toggle {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+}
+.pillar-toggle:hover { border-color: var(--primary-color); }
+.pillar-toggle.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+.pillar-content { display: none; }
+.pillar-content.active { display: block; }
+
+/* --- Linhas de Exemplo --- */
 .english-line { display: flex; align-items: center; font-weight: 500; margin-bottom: 0.25rem; }
 .tts-button { background: none; border: none; cursor: pointer; font-size: 1.2rem; margin-right: 0.5rem; color: var(--text-color); transition: all 0.2s ease; }
 .tts-button:hover { transform: scale(1.1); color: var(--primary-color); }
 .tts-button.speaking { color: var(--tts-speaking-color); }
 .ipa { font-size: 0.9rem; color: var(--secondary-color); margin-left: 0.5rem; font-style: italic; }
-.translation-line { padding-left: 2rem; font-size: 0.95rem; color: var(--text-color); opacity: 0.8; transition: all 0.3s ease; }
+.translation-line { padding-left: 2.5rem; font-size: 0.95rem; color: var(--text-color); opacity: 0.8; transition: all 0.3s ease; margin-bottom: 0.75rem;}
 body.hide-translation .translation-line { display: none; }
