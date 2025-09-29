@@ -42,8 +42,6 @@ body {
 
 /* --- CABEÇALHO E CONTROLES --- */
 .app-header {
-    height: auto;
-    min-height: var(--header-height);
     background-color: var(--surface-color);
     border-bottom: 1px solid var(--border-color);
     padding: 0.5rem 1rem;
@@ -55,18 +53,19 @@ body {
 
 .header-container {
     max-width: 1200px;
+    min-height: calc(var(--header-height) - 1rem);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    flex-wrap: wrap;
 }
 
 .app-header h1 {
     font-size: 1.5rem;
     color: var(--primary-color);
-    white-space: nowrap; /* Impede que o título quebre no meio */
+    white-space: nowrap;
 }
 
 .controls { display: flex; gap: 0.5rem; align-items: center; }
@@ -90,7 +89,7 @@ body {
 [data-theme='dark'] .sun-icon { display: none; }
 [data-theme='dark'] .moon-icon { display: block; }
 
-/* --- NAVEGAÇÃO POR ABAS (FIXA E ROLÁVEL) --- */
+/* --- NAVEGAÇÃO POR ABAS --- */
 .tab-nav {
     height: var(--nav-height);
     background-color: var(--surface-color);
@@ -112,7 +111,7 @@ body {
 }
 .tab-scroll-container::-webkit-scrollbar { display: none; }
 .tab-link {
-    padding: 0.75rem 1rem;
+    padding: 0 1rem;
     border: none;
     background: none;
     color: var(--text-color);
@@ -179,13 +178,14 @@ h5 { color: var(--text-color); font-weight: bold; margin-bottom: 0.5rem; }
 .tts-button.speaking { color: var(--tts-speaking-color); }
 .ipa { font-size: 0.9rem; color: var(--secondary-color); margin-left: 0.5rem; font-style: italic; white-space: normal; }
 .translation-line { padding-left: 2.5rem; font-size: 0.95rem; color: var(--text-color); opacity: 0.8; transition: all 0.3s ease; margin-bottom: 0.75rem;}
-body.hide-translation .translation-line { display: none; }
 
 /* --- AJUSTES DE RESPONSIVIDADE MOBILE --- */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .app-header {
-        --header-height: auto; /* Altura auto para o header */
-        top: 0;
+        position: static; /* Remove o sticky no mobile */
+    }
+    .tab-nav {
+        position: static; /* Remove o sticky no mobile */
     }
     .header-container {
         flex-direction: column;
@@ -201,8 +201,5 @@ body.hide-translation .translation-line { display: none; }
     }
     #search-input {
         flex-grow: 1;
-    }
-    .tab-nav {
-        top: 114px; /* Ajuste manual com base no novo header, pode variar */
     }
 }

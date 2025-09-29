@@ -4,19 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabContents = document.querySelectorAll('.tab-content');
     const searchInput = document.getElementById('search-input');
     const themeToggle = document.getElementById('theme-toggle');
-    const translationToggle = document.getElementById('translation-toggle');
     const body = document.body;
 
     // --- ESTADO DA APLICAÇÃO ---
     let currentTheme = localStorage.getItem('theme') || 'light';
-    let translationsVisible = localStorage.getItem('translationsVisible') !== 'false';
     const contentRendered = new Set();
 
     // --- INICIALIZAÇÃO ---
     const init = () => {
         setupEventListeners();
         applyTheme();
-        applyTranslationVisibility();
         activateTab(tabs[0]);
     };
 
@@ -25,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.addEventListener('click', () => activateTab(tab));
         });
         themeToggle.addEventListener('click', toggleTheme);
-        translationToggle.addEventListener('click', toggleTranslations);
         searchInput.addEventListener('input', handleSearch);
     };
 
@@ -50,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'pilares':
                     renderPilares(container);
                     break;
-                // ... (outros cases permanecem os mesmos)
                  case 'regulares':
                 case 'irregulares':
                     const verbs = await fetchData('verbos.json');
@@ -92,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { subj: 'I', pt: 'Eu' }, { subj: 'You', pt: 'Você' },
             { subj: 'He', pt: 'Ele' }, { subj: 'She', pt: 'Ela' },
             { subj: 'It', pt: 'Isso' }, { subj: 'We', pt: 'Nós' },
-            { subj: 'They', pt: 'Eles' }
+            { subj: 'They', pt: 'Eles/Elas' }
         ];
         
         const ptConjugations = {
@@ -119,124 +114,111 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         container.innerHTML = html;
 
-        // --- GERAÇÃO DE CONTEÚDO PARA CADA PILAR ---
-        const generatePillarForms = (p, tense, type, example) => {
-            const subjLower = p.subj.toLowerCase();
+        const generatePillarForms = (p, tense, type, example, example_pt, conj_pt) => {
+            const subjLower = p.subj === 'I' ? 'I' : p.subj.toLowerCase();
             const subjUpper = p.subj;
-            
-            // Lógica para To Be
+            const ptSubj = p.pt;
+            const ptVerb = ptConjugations[conj_pt][p.subj];
+            let forms = {};
+
             if (type === 'tobe') {
-                const forms = {};
+                const am = {I:'am',You:'are',He:'is',She:'is',It:'is',We:'are',They:'are'}[subjUpper];
+                const am_not_contr = {I:"'m not",You:"aren't",He:"isn't",She:"isn't",It:"isn't",We:"aren't",They:"aren't"}[subjUpper];
+                const was = {I:'was',You:'were',He:'was',She:'was',It:'was',We:'were',They:'were'}[subjUpper];
+                const was_not_contr = {I:"wasn't",You:"weren't",He:"wasn't",She:"wasn't",It:"wasn't",We:"weren't",They:"weren't"}[subjUpper];
+                
                 if (tense === 'Present') {
-                    const am = {I:'am',You:'are',He:'is',She:'is',It:'is',We:'are',They:'are'}[p.subj];
-                    const am_not_contr = {I:"'m not",You:"aren't",He:"isn't",She:"isn't",It:"isn't",We:"aren't",They:"aren't"}[p.subj];
-                    forms.aff = `${subjUpper} ${am} ${example}.`;
-                    forms.neg = `${subjUpper} ${am} not ${example}.`;
-                    forms.int = `${am.charAt(0).toUpperCase() + am.slice(1)} ${subjUpper} ${example}?`;
-                    forms.int_neg = `${am.charAt(0).toUpperCase() + am.slice(1)} ${subjUpper} not ${example}?`;
-                    forms.contr = `${subjUpper} ${am_not_contr} ${example}.`;
+                    forms.aff = { eng: `${subjUpper} ${am} ${example}.`, pt: `${ptSubj} ${ptVerb} ${example_pt}.` };
+                    forms.neg = { eng: `${subjUpper} ${am} not ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}.` };
+                    forms.int = { eng: `${am.charAt(0).toUpperCase() + am.slice(1)} ${subjLower} ${example}?`, pt: `${ptSubj} ${ptVerb} ${example_pt}?` };
+                    forms.int_neg = { eng: `${am.charAt(0).toUpperCase() + am.slice(1)} ${subjLower} not ${example}?`, pt: `${ptSubj} não ${ptVerb} ${example_pt}?` };
+                    forms.contr = { eng: `${subjUpper} ${am_not_contr} ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}. (Abreviado)` };
                 } else if (tense === 'Past') {
-                    const was = {I:'was',You:'were',He:'was',She:'was',It:'was',We:'were',They:'were'}[p.subj];
-                    const was_not_contr = {I:"wasn't",You:"weren't",He:"wasn't",She:"wasn't",It:"wasn't",We:"weren't",They:"weren't"}[p.subj];
-                    forms.aff = `${subjUpper} ${was} ${example}.`;
-                    forms.neg = `${subjUpper} ${was} not ${example}.`;
-                    forms.int = `${was.charAt(0).toUpperCase() + was.slice(1)} ${subjUpper} ${example}?`;
-                    forms.int_neg = `${was.charAt(0).toUpperCase() + was.slice(1)} ${subjUpper} not ${example}?`;
-                    forms.contr = `${subjUpper} ${was_not_contr} ${example}.`;
+                    forms.aff = { eng: `${subjUpper} ${was} ${example}.`, pt: `${ptSubj} ${ptVerb} ${example_pt}.` };
+                    forms.neg = { eng: `${subjUpper} ${was} not ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}.` };
+                    forms.int = { eng: `${was.charAt(0).toUpperCase() + was.slice(1)} ${subjLower} ${example}?`, pt: `${ptSubj} ${ptVerb} ${example_pt}?` };
+                    forms.int_neg = { eng: `${was.charAt(0).toUpperCase() + was.slice(1)} ${subjLower} not ${example}?`, pt: `${ptSubj} não ${ptVerb} ${example_pt}?` };
+                    forms.contr = { eng: `${subjUpper} ${was_not_contr} ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}. (Abreviado)` };
                 } else { // Future
-                    forms.aff = `${subjUpper} will be ${example}.`;
-                    forms.neg = `${subjUpper} will not be ${example}.`;
-                    forms.int = `Will ${subjLower} be ${example}?`;
-                    forms.int_neg = `Won't ${subjLower} be ${example}?`; // Mais comum
-                    forms.contr = `${subjUpper} won't be ${example}.`;
+                    forms.aff = { eng: `${subjUpper} will be ${example}.`, pt: `${ptSubj} ${ptVerb} ${example_pt}.` };
+                    forms.neg = { eng: `${subjUpper} will not be ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}.` };
+                    forms.int = { eng: `Will ${subjLower} be ${example}?`, pt: `${ptSubj} ${ptVerb} ${example_pt}?` };
+                    forms.int_neg = { eng: `Will ${subjLower} not be ${example}?`, pt: `${ptSubj} não ${ptVerb} ${example_pt}?` };
+                    forms.contr = { eng: `${subjUpper} won't be ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}. (Abreviado)` };
                 }
-                return forms;
-            }
-            // Lógica para Simple Tenses
-            if (type === 'simple') {
-                 const forms = {};
-                 const verb = ['He','She','It'].includes(p.subj) ? 'works' : 'work';
-                 const do_aux = ['He','She','It'].includes(p.subj) ? 'does' : 'do';
-                 const do_not_contr = ['He','She','It'].includes(p.subj) ? "doesn't" : "don't";
+            } else if (type === 'simple') {
+                 const verb = ['He','She','It'].includes(subjUpper) ? 'works' : 'work';
+                 const do_aux = ['He','She','It'].includes(subjUpper) ? 'does' : 'do';
+                 const do_not_contr = ['He','She','It'].includes(subjUpper) ? "doesn't" : "don't";
                  if (tense === 'Present') {
-                    forms.aff = `${subjUpper} ${verb} every day.`;
-                    forms.neg = `${subjUpper} ${do_not_contr} work every day.`;
-                    forms.int = `${do_aux.charAt(0).toUpperCase() + do_aux.slice(1)} ${subjLower} work every day?`;
-                    forms.int_neg = `${do_not_contr.charAt(0).toUpperCase() + do_not_contr.slice(1)} ${subjLower} work every day?`;
-                    forms.contr = forms.neg; // Mesma forma
+                    forms.aff = { eng: `${subjUpper} ${verb} ${example}.`, pt: `${ptSubj} ${ptVerb} ${example_pt}.` };
+                    forms.neg = { eng: `${subjUpper} ${do_not_contr} work ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}.` };
+                    forms.int = { eng: `${do_aux.charAt(0).toUpperCase() + do_aux.slice(1)} ${subjLower} work ${example}?`, pt: `${ptSubj} ${ptVerb} ${example_pt}?` };
+                    forms.int_neg = { eng: `${do_aux.charAt(0).toUpperCase() + do_aux.slice(1)} ${subjLower} not work ${example}?`, pt: `${ptSubj} não ${ptVerb} ${example_pt}?` };
+                    forms.contr = forms.neg;
                  } else if (tense === 'Past') {
-                    forms.aff = `${subjUpper} worked yesterday.`;
-                    forms.neg = `${subjUpper} did not work yesterday.`;
-                    forms.int = `Did ${subjLower} work yesterday?`;
-                    forms.int_neg = `Didn't ${subjLower} work yesterday?`;
-                    forms.contr = `${subjUpper} didn't work yesterday.`;
+                    forms.aff = { eng: `${subjUpper} worked ${example}.`, pt: `${ptSubj} ${ptVerb} ${example_pt}.` };
+                    forms.neg = { eng: `${subjUpper} did not work ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}.` };
+                    forms.int = { eng: `Did ${subjLower} work ${example}?`, pt: `${ptSubj} ${ptVerb} ${example_pt}?` };
+                    forms.int_neg = { eng: `Did ${subjLower} not work ${example}?`, pt: `${ptSubj} não ${ptVerb} ${example_pt}?` };
+                    forms.contr = { eng: `${subjUpper} didn't work ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}. (Abreviado)` };
                  } else { // Future
-                    forms.aff = `${subjUpper} will work tomorrow.`;
-                    forms.neg = `${subjUpper} will not work tomorrow.`;
-                    forms.int = `Will ${subjLower} work tomorrow?`;
-                    forms.int_neg = `Won't ${subjLower} work tomorrow?`;
-                    forms.contr = `${subjUpper} won't work tomorrow.`;
+                    forms.aff = { eng: `${subjUpper} will work ${example}.`, pt: `${ptSubj} ${ptVerb} ${example_pt}.` };
+                    forms.neg = { eng: `${subjUpper} will not work ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}.` };
+                    forms.int = { eng: `Will ${subjLower} work ${example}?`, pt: `${ptSubj} ${ptVerb} ${example_pt}?` };
+                    forms.int_neg = { eng: `Will ${subjLower} not work ${example}?`, pt: `${ptSubj} não ${ptVerb} ${example_pt}?` };
+                    forms.contr = { eng: `${subjUpper} won't work ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}. (Abreviado)` };
                  }
-                 return forms;
-            }
-             // Lógica para Can/Could
-            if (type === 'can') {
-                 const forms = {};
-                 if (tense === 'Present (Can)') {
-                    forms.aff = `${subjUpper} can ${example}.`;
-                    forms.neg = `${subjUpper} cannot ${example}.`;
-                    forms.int = `Can ${subjLower} ${example}?`;
-                    forms.int_neg = `Can't ${subjLower} ${example}?`;
-                    forms.contr = `${subjUpper} can't ${example}.`;
-                 } else if (tense === 'Past (Could)') {
-                    forms.aff = `${subjUpper} could ${example}.`;
-                    forms.neg = `${subjUpper} could not ${example}.`;
-                    forms.int = `Could ${subjLower} ${example}?`;
-                    forms.int_neg = `Couldn't ${subjLower} ${example}?`;
-                    forms.contr = `${subjUpper} couldn't ${example}.`;
+            } else if (type === 'can') {
+                 if (tense.includes('Can')) {
+                    forms.aff = { eng: `${subjUpper} can ${example}.`, pt: `${ptSubj} ${ptVerb} ${example_pt}.` };
+                    forms.neg = { eng: `${subjUpper} cannot ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}.` };
+                    forms.int = { eng: `Can ${subjLower} ${example}?`, pt: `${ptSubj} ${ptVerb} ${example_pt}?` };
+                    forms.int_neg = { eng: `Can ${subjLower} not ${example}?`, pt: `${ptSubj} não ${ptVerb} ${example_pt}?` };
+                    forms.contr = { eng: `${subjUpper} can't ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}. (Abreviado)` };
+                 } else if (tense.includes('Could')) {
+                    forms.aff = { eng: `${subjUpper} could ${example}.`, pt: `${ptSubj} ${ptVerb} ${example_pt}.` };
+                    forms.neg = { eng: `${subjUpper} could not ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}.` };
+                    forms.int = { eng: `Could ${subjLower} ${example}?`, pt: `${ptSubj} ${ptVerb} ${example_pt}?` };
+                    forms.int_neg = { eng: `Could ${subjLower} not ${example}?`, pt: `${ptSubj} não ${ptVerb} ${example_pt}?` };
+                    forms.contr = { eng: `${subjUpper} couldn't ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}. (Abreviado)` };
                  } else { // Future
-                    forms.aff = `${subjUpper} will be able to ${example}.`;
-                    forms.neg = `${subjUpper} will not be able to ${example}.`;
-                    forms.int = `Will ${subjLower} be able to ${example}?`;
-                    forms.int_neg = `Won't ${subjLower} be able to ${example}?`;
-                    forms.contr = `${subjUpper} won't be able to ${example}.`;
+                    forms.aff = { eng: `${subjUpper} will be able to ${example}.`, pt: `${ptSubj} ${ptVerb} ${example_pt}.` };
+                    forms.neg = { eng: `${subjUpper} will not be able to ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}.` };
+                    forms.int = { eng: `Will ${subjLower} be able to ${example}?`, pt: `${ptSubj} ${ptVerb} ${example_pt}?` };
+                    forms.int_neg = { eng: `Will ${subjLower} not be able to ${example}?`, pt: `${ptSubj} não ${ptVerb} ${example_pt}?` };
+                    forms.contr = { eng: `${subjUpper} won't be able to ${example}.`, pt: `${ptSubj} não ${ptVerb} ${example_pt}. (Abreviado)` };
                  }
-                 return forms;
             }
-        };
-        
-        const renderPillarGroup = (p, tense, type, example, conj_pt) => {
-             const forms = generatePillarForms(p, tense, type, example);
-             let content = `<h4>Pronome: ${p.subj}</h4>`;
-             content += `<h5>Afirmativa</h5>${createStackedTranslationHTML(forms.aff, '...', `${p.pt} ${ptConjugations[conj_pt][p.subj]} ${example}.`)}`;
-             content += `<h5>Negativa</h5>${createStackedTranslationHTML(forms.neg, '...', `${p.pt} não ${ptConjugations[conj_pt][p.subj]} ${example}.`)}`;
-             content += `<h5>Interrogativa</h5>${createStackedTranslationHTML(forms.int, '...', `${p.pt} ${ptConjugations[conj_pt][p.subj]} ${example}?`)}`;
-             content += `<h5>Interrogativa Negativa</h5>${createStackedTranslationHTML(forms.int_neg, '...', `${p.pt} não ${ptConjugations[conj_pt][p.subj]} ${example}? (Abreviado)`)}`;
-             content += `<h5>Abreviada (Negativa)</h5>${createStackedTranslationHTML(forms.contr, '...', `${p.pt} não ${ptConjugations[conj_pt][p.subj]} ${example}. (Abreviado)`)}`;
-             return content;
+            
+            let content = `<h4>Pronome: ${subjUpper}</h4>`;
+            content += `<h5>Afirmativa</h5>${createStackedTranslationHTML(forms.aff.eng, '...', forms.aff.pt)}`;
+            content += `<h5>Negativa</h5>${createStackedTranslationHTML(forms.neg.eng, '...', forms.neg.pt)}`;
+            content += `<h5>Interrogativa</h5>${createStackedTranslationHTML(forms.int.eng, '...', forms.int.pt)}`;
+            content += `<h5>Interrogativa Negativa</h5>${createStackedTranslationHTML(forms.int_neg.eng, '...', forms.int_neg.pt)}`;
+            content += `<h5>Abreviada (Negativa)</h5>${createStackedTranslationHTML(forms.contr.eng, '...', forms.contr.pt)}`;
+            return content;
         };
 
-        // Renderiza o conteúdo dentro dos divs
         document.getElementById('content-tobe').innerHTML = `
             <h3>To Be</h3>
-            <div class="pillar-group"><h3>Present</h3> ${pronouns.map(p => renderPillarGroup(p, 'Present', 'tobe', 'happy', 'ser/estar')).join('')}</div>
-            <div class="pillar-group"><h3>Past</h3> ${pronouns.map(p => renderPillarGroup(p, 'Past', 'tobe', 'at home', 'ser/estar_passado')).join('')}</div>
-            <div class="pillar-group"><h3>Future</h3> ${pronouns.map(p => renderPillarGroup(p, 'Future', 'tobe', 'a doctor', 'ser/estar_futuro')).join('')}</div>
+            <div class="pillar-group"><h3>Present</h3> ${pronouns.map(p => generatePillarForms(p, 'Present', 'tobe', 'happy', 'feliz', 'ser/estar')).join('')}</div>
+            <div class="pillar-group"><h3>Past</h3> ${pronouns.map(p => generatePillarForms(p, 'Past', 'tobe', 'at home', 'em casa', 'ser/estar_passado')).join('')}</div>
+            <div class="pillar-group"><h3>Future</h3> ${pronouns.map(p => generatePillarForms(p, 'Future', 'tobe', 'a doctor', 'um(a) médico(a)', 'ser/estar_futuro')).join('')}</div>
         `;
         document.getElementById('content-simple').innerHTML = `
             <h3>Simple Tenses</h3>
-            <div class="pillar-group"><h3>Present</h3> ${pronouns.map(p => renderPillarGroup(p, 'Present', 'simple', '', 'trabalhar')).join('')}</div>
-            <div class="pillar-group"><h3>Past</h3> ${pronouns.map(p => renderPillarGroup(p, 'Past', 'simple', '', 'trabalhar_passado')).join('')}</div>
-            <div class="pillar-group"><h3>Future</h3> ${pronouns.map(p => renderPillarGroup(p, 'Future', 'simple', '', 'trabalhar_futuro')).join('')}</div>
+            <div class="pillar-group"><h3>Present</h3> ${pronouns.map(p => generatePillarForms(p, 'Present', 'simple', 'every day', 'todos os dias', 'trabalhar')).join('')}</div>
+            <div class="pillar-group"><h3>Past</h3> ${pronouns.map(p => generatePillarForms(p, 'Past', 'simple', 'yesterday', 'ontem', 'trabalhar_passado')).join('')}</div>
+            <div class="pillar-group"><h3>Future</h3> ${pronouns.map(p => generatePillarForms(p, 'Future', 'simple', 'tomorrow', 'amanhã', 'trabalhar_futuro')).join('')}</div>
         `;
          document.getElementById('content-can').innerHTML = `
             <h3>Can / Could</h3>
-            <div class="pillar-group"><h3>Present (Can)</h3> ${pronouns.map(p => renderPillarGroup(p, 'Present (Can)', 'can', 'swim', 'conseguir')).join('')}</div>
-            <div class="pillar-group"><h3>Past (Could)</h3> ${pronouns.map(p => renderPillarGroup(p, 'Past (Could)', 'can', 'swim', 'conseguir_passado')).join('')}</div>
-            <div class="pillar-group"><h3>Future (Will be able to)</h3> ${pronouns.map(p => renderPillarGroup(p, 'Future (Will be able to)', 'can', 'swim', 'conseguir_futuro')).join('')}</div>
+            <div class="pillar-group"><h3>Present (Can)</h3> ${pronouns.map(p => generatePillarForms(p, 'Present (Can)', 'can', 'swim', 'nadar', 'conseguir')).join('')}</div>
+            <div class="pillar-group"><h3>Past (Could)</h3> ${pronouns.map(p => generatePillarForms(p, 'Past (Could)', 'can', 'swim', 'nadar', 'conseguir_passado')).join('')}</div>
+            <div class="pillar-group"><h3>Future (Will be able to)</h3> ${pronouns.map(p => generatePillarForms(p, 'Future (Will be able to)', 'can', 'swim', 'nadar', 'conseguir_futuro')).join('')}</div>
         `;
 
-        // Lógica do acordeão
         const pillarToggles = container.querySelectorAll('.pillar-toggle');
         const pillarContents = container.querySelectorAll('.pillar-content');
         pillarToggles.forEach(toggle => {
@@ -256,11 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
         addTTSListeners(container);
     };
 
-    // --- FUNÇÕES DE RENDERIZAÇÃO E CORE (O RESTO PERMANECE O MESMO) ---
-     const renderVerbs = (container, verbs, type) => {
-        container.innerHTML = `<h2>Verbos ${type === 'regular' ? 'Regulares' : 'Irregulares'} (${verbs.filter(v=>v.type === type).length})</h2><div class="content-grid"></div>`;
+    const renderVerbs = (container, verbs, type) => {
+        const filteredVerbs = verbs.filter(v => v.type === type);
+        container.innerHTML = `<h2>Verbos ${type === 'regular' ? 'Regulares' : 'Irregulares'} (${filteredVerbs.length})</h2><div class="content-grid"></div>`;
         const grid = container.querySelector('.content-grid');
-        grid.innerHTML = verbs.filter(v => v.type === type).map(verb => `
+        grid.innerHTML = filteredVerbs.map(verb => `
             <div class="content-item searchable-item" data-search-term="${verb.infinitive} ${verb.past} ${verb.participle} ${verb.translation}">
                 <h3>${verb.infinitive} / ${verb.past} / ${verb.participle}</h3>
                 <p class="translation-line"><em>${verb.translation}</em></p>
@@ -305,15 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme();
     };
     const applyTheme = () => { body.dataset.theme = currentTheme; };
-    const toggleTranslations = () => {
-        translationsVisible = !translationsVisible;
-        localStorage.setItem('translationsVisible', translationsVisible);
-        applyTranslationVisibility();
-    };
-    const applyTranslationVisibility = () => {
-        body.classList.toggle('hide-translation', !translationsVisible);
-        translationToggle.textContent = translationsVisible ? 'Tradução: ON' : 'Tradução: OFF';
-    };
     const handleSearch = (e) => {
         const searchTerm = e.target.value.toLowerCase().trim();
         const activeContent = document.querySelector('.tab-content.active');
