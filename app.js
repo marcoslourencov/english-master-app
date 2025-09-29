@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'conseguir_passado': { 'I': 'conseguia', 'You': 'conseguia', 'He': 'conseguia', 'She': 'conseguia', 'It': 'conseguia', 'We': 'conseguíamos', 'They': 'conseguiam' },
             'conseguir_futuro': { 'I': 'conseguirei', 'You': 'conseguirá', 'He': 'conseguirá', 'She': 'conseguirá', 'It': 'conseguirá', 'We': 'conseguiremos', 'They': 'conseguirão' },
             'ter': { 'I': 'tenho', 'You': 'tem', 'He': 'tem', 'She': 'tem', 'It': 'tem', 'We': 'temos', 'They': 'têm' },
-            'ter_obrigacao_passado': { 'I': 'tive', 'You': 'teve', 'He': 'teve', 'She': 'teve', 'It': 'teve', 'We': 'tivemos', 'They': 'tiveram' },
-            'ter_obrigacao_futuro': { 'I': 'terei', 'You': 'terá', 'He': 'terá', 'She': 'terá', 'It': 'terá', 'We': 'teremos', 'They': 'terão' }
+            'ter_passado': { 'I': 'tive', 'You': 'teve', 'He': 'teve', 'She': 'teve', 'It': 'teve', 'We': 'tivemos', 'They': 'tiveram' },
+            'ter_futuro': { 'I': 'terei', 'You': 'terá', 'He': 'terá', 'She': 'terá', 'It': 'terá', 'We': 'teremos', 'They': 'terão' }
         };
 
         let html = `
@@ -200,21 +200,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dont_aux = ['He', 'She', 'It'].includes(subjUpper) ? "doesn't" : "don't";
                 const haveTo = ['He', 'She', 'It'].includes(subjUpper) ? 'has to' : 'have to';
 
-                if(tense.includes('Posse')) {
+                if(tense.includes('Posse (Presente)')) {
                     forms.aff = { eng: `${subjUpper} ${have} a car.`, pt: `${ptSubj} ${ptVerb} um carro.` };
                     forms.neg = { eng: `${subjUpper} ${dont_aux} have a car.`, pt: `${ptSubj} não ${ptVerb} um carro.` };
                     forms.int = { eng: `${do_aux.charAt(0).toUpperCase() + do_aux.slice(1)} ${subjLower} have a car?`, pt: `${ptSubj} ${ptVerb} um carro?` };
-                } else if(tense.includes('Obrigação')) {
+                } else if (tense.includes('Posse (Passado)')) {
+                    forms.aff = { eng: `${subjUpper} had a car.`, pt: `${ptSubj} ${ptVerb} um carro.` };
+                    forms.neg = { eng: `${subjUpper} didn't have a car.`, pt: `${ptSubj} não ${ptVerb} um carro.` };
+                    forms.int = { eng: `Did ${subjLower} have a car?`, pt: `${ptSubj} ${ptVerb} um carro?` };
+                } else if (tense.includes('Posse (Futuro)')) {
+                    forms.aff = { eng: `${subjUpper} will have a car.`, pt: `${ptSubj} ${ptVerb} um carro.` };
+                    forms.neg = { eng: `${subjUpper} won't have a car.`, pt: `${ptSubj} não ${ptVerb} um carro.` };
+                    forms.int = { eng: `Will ${subjLower} have a car?`, pt: `${ptSubj} ${ptVerb} um carro?` };
+                } else if(tense.includes('Obrigação (Presente)')) {
                     forms.aff = { eng: `${subjUpper} ${haveTo} study.`, pt: `${ptSubj} tem que estudar.` };
                     forms.neg = { eng: `${subjUpper} ${dont_aux} have to study.`, pt: `${ptSubj} não tem que estudar.` };
                     forms.int = { eng: `${do_aux.charAt(0).toUpperCase() + do_aux.slice(1)} ${subjLower} have to study?`, pt: `${ptSubj} tem que estudar?` };
-                } else if(tense.includes('Passado')) {
+                } else if(tense.includes('Obrigação (Passado)')) {
                     forms.aff = { eng: `${subjUpper} had to travel.`, pt: `${ptSubj} ${ptVerb} que viajar.` };
                     forms.neg = { eng: `${subjUpper} didn't have to travel.`, pt: `${ptSubj} não ${ptVerb} que viajar.` };
                     forms.int = { eng: `Did ${subjLower} have to travel?`, pt: `${ptSubj} ${ptVerb} que viajar?` };
-                } else { // Futuro
+                } else { // Obrigação (Futuro)
                     forms.aff = { eng: `${subjUpper} will have to wait.`, pt: `${ptSubj} ${ptVerb} que esperar.` };
-                    forms.neg = { eng: `${subjUpper} will not have to wait.`, pt: `${ptSubj} não ${ptVerb} que esperar.` };
+                    forms.neg = { eng: `${subjUpper} won't have to wait.`, pt: `${ptSubj} não ${ptVerb} que esperar.` };
                     forms.int = { eng: `Will ${subjLower} have to wait?`, pt: `${ptSubj} ${ptVerb} que esperar?` };
                 }
             }
@@ -253,10 +261,12 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.getElementById('content-have').innerHTML = `
             <h3>Have</h3>
-            <div class="pillar-group"><h3>Presente (Posse)</h3> ${pronouns.map(p => generatePillarForms(p, 'Presente (Posse)', 'have', '', '', 'ter')).join('')}</div>
-            <div class="pillar-group"><h3>Presente (Obrigação)</h3> ${pronouns.map(p => generatePillarForms(p, 'Presente (Obrigação)', 'have', '', '', 'ter')).join('')}</div>
-            <div class="pillar-group"><h3>Passado (Obrigação)</h3> ${pronouns.map(p => generatePillarForms(p, 'Passado (Obrigação)', 'have', '', '', 'ter_obrigacao_passado')).join('')}</div>
-            <div class="pillar-group"><h3>Futuro (Obrigação)</h3> ${pronouns.map(p => generatePillarForms(p, 'Futuro (Obrigação)', 'have', '', '', 'ter_obrigacao_futuro')).join('')}</div>
+            <div class="pillar-group"><h3>Posse (Presente)</h3> ${pronouns.map(p => generatePillarForms(p, 'Posse (Presente)', 'have', '', '', 'ter')).join('')}</div>
+            <div class="pillar-group"><h3>Posse (Passado)</h3> ${pronouns.map(p => generatePillarForms(p, 'Posse (Passado)', 'have', '', '', 'ter_passado')).join('')}</div>
+            <div class="pillar-group"><h3>Posse (Futuro)</h3> ${pronouns.map(p => generatePillarForms(p, 'Posse (Futuro)', 'have', '', '', 'ter_futuro')).join('')}</div>
+            <div class="pillar-group"><h3>Obrigação (Presente)</h3> ${pronouns.map(p => generatePillarForms(p, 'Obrigação (Presente)', 'have', '', '', 'ter')).join('')}</div>
+            <div class="pillar-group"><h3>Obrigação (Passado)</h3> ${pronouns.map(p => generatePillarForms(p, 'Obrigação (Passado)', 'have', '', '', 'ter_passado')).join('')}</div>
+            <div class="pillar-group"><h3>Obrigação (Futuro)</h3> ${pronouns.map(p => generatePillarForms(p, 'Obrigação (Futuro)', 'have', '', '', 'ter_futuro')).join('')}</div>
         `;
 
         const pillarToggles = container.querySelectorAll('.pillar-toggle');
