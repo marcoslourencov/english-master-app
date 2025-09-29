@@ -100,7 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'conseguir': { 'I': 'consigo', 'You': 'consegue', 'He': 'consegue', 'She': 'consegue', 'It': 'consegue', 'We': 'conseguimos', 'They': 'conseguem' },
             'conseguir_passado': { 'I': 'conseguia', 'You': 'conseguia', 'He': 'conseguia', 'She': 'conseguia', 'It': 'conseguia', 'We': 'conseguíamos', 'They': 'conseguiam' },
             'conseguir_futuro': { 'I': 'conseguirei', 'You': 'conseguirá', 'He': 'conseguirá', 'She': 'conseguirá', 'It': 'conseguirá', 'We': 'conseguiremos', 'They': 'conseguirão' },
-            'ter': { 'I': 'tenho', 'You': 'tem', 'He': 'tem', 'She': 'tem', 'It': 'tem', 'We': 'temos', 'They': 'têm' }
+            'ter': { 'I': 'tenho', 'You': 'tem', 'He': 'tem', 'She': 'tem', 'It': 'tem', 'We': 'temos', 'They': 'têm' },
+            'ter_obrigacao_passado': { 'I': 'tive', 'You': 'teve', 'He': 'teve', 'She': 'teve', 'It': 'teve', 'We': 'tivemos', 'They': 'tiveram' },
+            'ter_obrigacao_futuro': { 'I': 'terei', 'You': 'terá', 'He': 'terá', 'She': 'terá', 'It': 'terá', 'We': 'teremos', 'They': 'terão' }
         };
 
         let html = `
@@ -118,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = html;
 
         const generatePillarForms = (p, tense, type, example, example_pt, conj_pt) => {
-            const subjLower = p.subj === 'I' ? 'I' : p.subj.toLowerCase(); // CORREÇÃO: "I" sempre maiúsculo
+            const subjLower = p.subj === 'I' ? 'I' : p.subj.toLowerCase();
             const subjUpper = p.subj;
             const ptSubj = p.pt;
             const ptVerb = ptConjugations[conj_pt][p.subj];
@@ -196,16 +198,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 const have = ['He', 'She', 'It'].includes(subjUpper) ? 'has' : 'have';
                 const do_aux = ['He', 'She', 'It'].includes(subjUpper) ? 'does' : 'do';
                 const dont_aux = ['He', 'She', 'It'].includes(subjUpper) ? "doesn't" : "don't";
+                const haveTo = ['He', 'She', 'It'].includes(subjUpper) ? 'has to' : 'have to';
 
-                if(tense === 'Presente (Posse)') {
+                if(tense.includes('Posse')) {
                     forms.aff = { eng: `${subjUpper} ${have} a car.`, pt: `${ptSubj} ${ptVerb} um carro.` };
                     forms.neg = { eng: `${subjUpper} ${dont_aux} have a car.`, pt: `${ptSubj} não ${ptVerb} um carro.` };
                     forms.int = { eng: `${do_aux.charAt(0).toUpperCase() + do_aux.slice(1)} ${subjLower} have a car?`, pt: `${ptSubj} ${ptVerb} um carro?` };
-                } else { // Obrigação
-                    const haveTo = ['He', 'She', 'It'].includes(subjUpper) ? 'has to' : 'have to';
+                } else if(tense.includes('Obrigação')) {
                     forms.aff = { eng: `${subjUpper} ${haveTo} study.`, pt: `${ptSubj} tem que estudar.` };
                     forms.neg = { eng: `${subjUpper} ${dont_aux} have to study.`, pt: `${ptSubj} não tem que estudar.` };
                     forms.int = { eng: `${do_aux.charAt(0).toUpperCase() + do_aux.slice(1)} ${subjLower} have to study?`, pt: `${ptSubj} tem que estudar?` };
+                } else if(tense.includes('Passado')) {
+                    forms.aff = { eng: `${subjUpper} had to travel.`, pt: `${ptSubj} ${ptVerb} que viajar.` };
+                    forms.neg = { eng: `${subjUpper} didn't have to travel.`, pt: `${ptSubj} não ${ptVerb} que viajar.` };
+                    forms.int = { eng: `Did ${subjLower} have to travel?`, pt: `${ptSubj} ${ptVerb} que viajar?` };
+                } else { // Futuro
+                    forms.aff = { eng: `${subjUpper} will have to wait.`, pt: `${ptSubj} ${ptVerb} que esperar.` };
+                    forms.neg = { eng: `${subjUpper} will not have to wait.`, pt: `${ptSubj} não ${ptVerb} que esperar.` };
+                    forms.int = { eng: `Will ${subjLower} have to wait?`, pt: `${ptSubj} ${ptVerb} que esperar?` };
                 }
             }
             
@@ -245,6 +255,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3>Have</h3>
             <div class="pillar-group"><h3>Presente (Posse)</h3> ${pronouns.map(p => generatePillarForms(p, 'Presente (Posse)', 'have', '', '', 'ter')).join('')}</div>
             <div class="pillar-group"><h3>Presente (Obrigação)</h3> ${pronouns.map(p => generatePillarForms(p, 'Presente (Obrigação)', 'have', '', '', 'ter')).join('')}</div>
+            <div class="pillar-group"><h3>Passado (Obrigação)</h3> ${pronouns.map(p => generatePillarForms(p, 'Passado (Obrigação)', 'have', '', '', 'ter_obrigacao_passado')).join('')}</div>
+            <div class="pillar-group"><h3>Futuro (Obrigação)</h3> ${pronouns.map(p => generatePillarForms(p, 'Futuro (Obrigação)', 'have', '', '', 'ter_obrigacao_futuro')).join('')}</div>
         `;
 
         const pillarToggles = container.querySelectorAll('.pillar-toggle');
@@ -264,8 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         addTTSListeners(container);
     };
 
-    // --- FUNÇÕES DE RENDERIZAÇÃO E CORE (O RESTO PERMANECE O MESMO) ---
-     const renderVerbs = (container, verbs, type) => {
+    const renderVerbs = (container, verbs, type) => {
         const filteredVerbs = verbs.filter(v => v.type === type);
         container.innerHTML = `<h2>Verbos ${type === 'regular' ? 'Regulares' : 'Irregulares'} (${filteredVerbs.length})</h2><div class="content-grid"></div>`;
         const grid = container.querySelector('.content-grid');
@@ -326,9 +337,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const addTTSListeners = (container) => {
         container.addEventListener('click', (e) => {
-            if (e.target.classList.contains('tts-button')) {
-                const textToSpeak = e.target.nextElementSibling.textContent;
-                speak(textToSpeak, e.target);
+            if (e.target.closest('.tts-button')) {
+                const textToSpeak = e.target.closest('.tts-button').nextElementSibling.textContent;
+                speak(textToSpeak, e.target.closest('.tts-button'));
             }
         });
     };
